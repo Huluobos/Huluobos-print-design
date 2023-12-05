@@ -15,7 +15,7 @@ try {
 }
 
 if (tempList.length == 0) {
-  localStorage.setItem('tempList', outStockTemp)
+  localStorage.setItem('tempList', JSON.stringify(outStockTemp) )
 }
 
 

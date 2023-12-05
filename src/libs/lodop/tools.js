@@ -58,7 +58,7 @@ export const tableTempTohtml = (columns, data, style) => {
           html += (idx + 1)
         } else {
           html += '<td>'
-          html += item[column.name]
+          html += item[column.name] || ''
         }
         html += '</td>'
       })
@@ -89,7 +89,7 @@ export const imageTempTohtml = (value) => {
  */
 export const strTempToValue = (str, value) => {
   let reg = /({[^}^{]*})/g
-  return str.replace(reg, value || '')
+  return str.replace(reg, (value || value===0)? value : '')
 }
 export const htmlTempTohtml = (val, style) => {
   // 表格全局样式

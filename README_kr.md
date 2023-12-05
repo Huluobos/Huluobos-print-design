@@ -120,7 +120,7 @@ tempValue 为打印模板对象， 对象中参数具体解析如下：
     title: "订单编号（条码）",
     value: "{orderNumber}",
     defaultValue: "1234567890",
-    name: "orderNumber"
+    name: "orderNumber",
     lodopStyle: { QRCodeVersion: '1', QRCodeErrorLevel: 'L' },
   },
   {

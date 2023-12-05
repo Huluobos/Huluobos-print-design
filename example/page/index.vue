@@ -5,11 +5,6 @@
       <div class="section">模板管理</div>
       <el-table :data="tempList" style="width: 100%" size="mini" border>
         <el-table-column label="模板名称" prop="title"></el-table-column>
-        <el-table-column label="模板类型">
-          <template slot-scope="scope">
-            <span>{{scope.row.type == 1 ? '出库单' : '入库单'}}</span>
-          </template>
-        </el-table-column>
         <el-table-column label="模板宽高">
           <template slot-scope="scope">
             <span>{{scope.row.width + ' * '+ scope.row.height}}</span>
@@ -166,7 +161,7 @@ export default {
       },
       testData: {
         OutStock: JSON.stringify(OutStockData),
-        InStock: JSON.stringify(InStockData),
+        InStock: JSON.stringify(""),
       },
     }
   },

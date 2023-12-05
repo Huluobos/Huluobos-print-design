@@ -44,11 +44,9 @@ export default {
   methods: {
     // 添加组件
     addTempItem(e, item) {
-      console.log("item", item)
       switch (item.type) {
         case 'braid-table': {
           let selectCol = []
-          console.log(item.selectCol)
           item.selectCol.forEach((itemName) => {
             let colInfo = item.columnsAttr.find((col) => col.name === itemName)
             if (colInfo) {

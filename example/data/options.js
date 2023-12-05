@@ -1,211 +1,385 @@
 /**
  * 出库单 模板设计选项
  */
-export const OutStockOptions = [
-  {
-    type: 'braid-txt',
-    isEdit: 1,
-    title: '自定义文本',
-    value: '自定义文本',
-    defaultValue: '自定义文本',
-    name: ''
-  },
-  {
-    type: 'braid-txt',
-    isEdit: 0,
-    title: '公司名称',
-    value: '{公司名称}',
-    defaultValue: '某某公司',
-    name: 'companyName'
-  },
-  {
-    type: 'braid-txt',
-    isEdit: 1,
-    title: '出库单号',
-    value: '{出库单号}',
-    defaultValue: 'CK-1234567890',
-    name: 'stockoutCode'
-  },
-  {
-    type: 'bar-code',
-    isEdit: 1,
-    title: '单号条码',
-    value: '{单号}',
-    defaultValue: 'CK-1234567890',
-    name: 'stockoutCode',
-    lodopStyle: { QRCodeVersion: '1', QRCodeErrorLevel: 'L' },
-  },
-  {
-    type: 'braid-txt',
-    isEdit: 1,
-    title: '客户/供应商',
-    value: '{客户/供应商}',
-    defaultValue: '中国苹果',
-    name: 'unitName'
-  },
-  {
-    type: 'braid-txt',
-    isEdit: 1,
-    title: '经办人',
-    value: '{经办人}',
-    defaultValue: 'zj001',
-    name: 'handlerName'
-  },
-  {
-    type: 'braid-txt',
-    isEdit: 1,
-    title: '出库类型',
-    value: '{出库类型}',
-    defaultValue: '销售出库',
-    name: 'stockoutType'
-  },
-  {
-    type: 'braid-txt',
-    isEdit: 1,
-    title: '出库仓库',
-    value: '{出库仓库}',
-    defaultValue: '北京仓库',
-    name: 'warehouseName'
-  },
-  {
-    type: 'braid-txt',
-    isEdit: 1,
-    title: '出库时间',
-    value: '{出库时间}',
-    defaultValue: '2020-08-27 12:00:00',
-    name: 'businessDate'
-  },
-  {
-    type: 'braid-txt',
-    isEdit: 1,
-    title: '制单人',
-    value: '{制单人}',
-    defaultValue: 'jz002',
-    name: 'createUserName'
-  },
-  {
-    type: 'braid-txt',
-    isEdit: 1,
-    title: '制单时间',
-    value: '{制单时间}',
-    defaultValue: '2020-08-27 12:00:00',
-    name: 'created'
-  },
-  {
-    type: 'braid-txt',
-    isEdit: 1,
-    title: '收货人(销售)',
-    value: '{收货人}',
-    defaultValue: '刘某某',
-    name: 'receivePerson'
-  },
-  {
-    type: 'braid-txt',
-    isEdit: 1,
-    title: '收货电话(销售)',
-    value: '{收货人电话}',
-    defaultValue: '收货人',
-    name: 'receivePhone'
-  },
-  {
-    type: 'braid-txt',
-    isEdit: 1,
-    title: '收货地址(销售)',
-    value: '{收货地址}',
-    defaultValue: '四川成都',
-    name: 'address'
-  },
-  {
-    type: 'braid-txt',
-    isEdit: 1,
-    title: '合计金额',
-    value: '{合计金额}',
-    defaultValue: '123.00',
-    name: 'totalPrice'
-  },
-  {
-    type: 'braid-txt',
-    isEdit: 1,
-    title: '摘要',
-    value: '{摘要}',
-    defaultValue: '北京采购入库成都摘要',
-    name: 'remark'
-  },
-  {
-    type: 'braid-html',
-    isEdit: 1,
-    title: '分页',
-    value: '{第##页/共##页}',
-    defaultValue: '<font><span tdata=\'pageNO\'>第##页</span>/<span tdata=\'pageCount\'>共##页</span></font>',
-    name: ''
-  },
-  {
-    type: 'braid-table',
-    isEdit: 0,
-    title: '出库商品明细',
-    name: 'details',
-    value: '{details}',
-    style: {},
-    defaultValue: [
-      {
-        productName: '苹果ipone11pro',
-        skuName: 'iphone11pro256g',
-        specModel: '165L',
-        quantity: 3,
-        snCode: '[SPP1Y79G1]',
-        price: '23.00'
-      },
-      {
-        productName: '苹果ipone11pro',
-        skuName: 'iphone11pro124g',
-        specModel: '165L',
-        quantity: 3,
-        snCode: ' [SPP1Y79G1]',
-        price: '12.00'
-      }
+export const OutStockOptions =[
 
-    ],
-    tabelHtml: '',
-    columnsAttr: [
-      {
-        title: '产品名称',
-        value: '{产品名称}',
-        name: 'productName',
-      },
-      {
-        title: 'sku名称',
-        value: '{sku名称}',
-        name: 'skuName',
-      },
-      {
-        title: '规格型号',
-        value: '{规格型号}',
-        name: 'specModel'
-      },
-      {
-        title: '数量',
-        value: '{数量}',
-        name: 'quantity'
-      },
-      {
-        title: '单价',
-        value: '{单价}',
-        name: 'price'
-      },
-      {
-        title: '产品序列号',
-        value: '产品序列号明细：<br>{产品序列号}',
-        name: 'snCode',
-        trSet: {
-          title: '产品序列号明细:',
-          col: 5,
-          margin: '50px'
-        },
-      }
-    ],
-    columns: []
+  // 第一页
+  {
+    type: "braid-html",
+    title: "分页1",
+    isEdit: true,
+    value: "{第1页/共3页}",
+    defaultValue: "<font ><span tdata='pageNO'>第1页</span>/<span tdata='pageCount'>共3页</span></font>",
+    style: {ItemType: 2, BottomMargin: 8,}
   },
-  {type: "braid-table", isEdit: 0, title: "商品明细111", name: "goodsList", value: "{goodsList}",columns: [], columnsAttr: [
+  {
+    type: "braid-txt",
+    isEdit: true,
+    title: "自定义文本",
+    value: "温馨提示：在您提供发票、收据时，请您同时索要“发票（收据）交接单 ”",
+    defaultValue: "温馨提示：在您提供发票、收据时，请您同时索要“发票（收据）交接单 ”"
+  },
+  {type: "braid-txt", isEdit: true, title: "标题", value: "{statementTitle}", name: "statementTitle",},
+  {type: "braid-txt", isEdit: true, title: "结算单号", value: "结算单号:{id}", name: "id", defaultValue: '结算单号'},
+  {
+    type: "braid-txt",
+    isEdit: true,
+    title: "合同号",
+    value: "合同号 : {contractNo}",
+    name: "contractNo",
+    defaultValue: '合同号'
+  },
+  {
+    type: "braid-txt",
+    isEdit: true,
+    title: "结算年月",
+    value: "结算年月 : {month}",
+    name: "month",
+    defaultValue: '结算年月'
+  },
+  {
+    type: "braid-txt",
+    isEdit: true,
+    title: "结算部门",
+    value: "结算部门 : {deptName}",
+    name: "deptName",
+    defaultValue: '结算部门'
+  },
+  {
+    type: "braid-txt",
+    isEdit: true,
+    title: "本月销售",
+    value: "结算日期 : {salesAmount}",
+    name: "salesAmount",
+    defaultValue: '"本月销售"'
+  },
+  // statementPrintDetail.trader     : trader_
+  {
+    type: "braid-txt",
+    isEdit: true,
+    title: "公司名称",
+    value: "公司名称：{trader_traderName}",
+    name: "trader_traderName",
+    defaultValue: '公司名称'
+  },
+  {
+    type: "braid-txt",
+    isEdit: true,
+    title: "电话",
+    value: "电话：{trader_phone}",
+    name: "trader_phone",
+    defaultValue: '电话'
+  },
+  {
+    type: "braid-txt",
+    isEdit: true,
+    title: "公司地址",
+    value: "公司地址：{trader_address}",
+    name: "trader_address",
+    defaultValue: '公司地址'
+  },
+  {
+    type: "braid-txt",
+    isEdit: true,
+    title: "税号",
+    value: "税号：{trader_creditCode}",
+    name: "trader_creditCode",
+    defaultValue: '税号'
+  },
+  {
+    type: "braid-txt",
+    isEdit: true,
+    title: "开户行",
+    value: "开户行：{trader_bankName}",
+    name: "trader_bankName",
+    defaultValue: '开户行'
+  },
+  {
+    type: "braid-txt",
+    isEdit: true,
+    title: "账号",
+    value: "账号：{trader_bankAccount}",
+    name: "trader_bankAccount",
+    defaultValue: '账号'
+  },
+  // statementPrintDetail.sell     : sell_
+  {
+    type: "braid-txt",
+    isEdit: true,
+    title: "本月销售净额",
+    value: "本月销售净额：{sell_sellTrueAmount}",
+    name: "sell_sellTrueAmount",
+    defaultValue: '本月销售净额'
+  },
+  {
+    type: "braid-txt",
+    isEdit: true,
+    title: "本月保底额",
+    value: "本月保底额：{sell_guaranteeAmount}",
+    name: "sell_guaranteeAmount",
+    defaultValue: ' 本月保底额'
+  },
+  {
+    type: "braid-txt",
+    isEdit: true,
+    title: "成本额",
+    value: "成本额：{sell_costAmount}",
+    name: "sell_costAmount",
+    defaultValue: '成本额'
+  },
+  {
+    type: "braid-txt",
+    isEdit: true,
+    title: "超保底返款额",
+    value: "超保底返款额：{sell_outGuaranteeAmount}",
+    name: "sell_outGuaranteeAmount",
+    defaultValue: '超保底返款额'
+  },
+  {
+    type: "braid-txt",
+    isEdit: true,
+    title: "不足保底扣款",
+    value: "不足保底扣款：{sell_inGuaranteeAmount}",
+    name: "sell_inGuaranteeAmount",
+    defaultValue: '不足保底扣款'
+  },
+  {
+    type: "braid-txt",
+    isEdit: true,
+    title: "成本扣款",
+    value: "成本扣款：{sell_guaranteeCompensateAmount}",
+    name: "sell_guaranteeCompensateAmount",
+    defaultValue: '成本扣款'
+  },
+  {
+    type: "braid-txt",
+    isEdit: true,
+    title: "成本总额",
+    value: "成本总额：{sell_totalCostAmount}",
+    name: "sell_totalCostAmount",
+    defaultValue: '成本总额'
+  },
+
+  // statementPrintDetail.rate     : rate_
+  {
+    type: "braid-table", title: "扣款名称", name: "rate_table", value: "{rate_table}", columnsAttr: [
+      {title: "扣款名称", value: "{扣款合计}", name: "rate_text_all"},
+      {title: "费用合计", value: "{费用合计}", name: "rate_feeGoodsAmount"},
+    ]
+  },
+  // statementPrintDetail.rate     : rate_
+  {
+    type: "braid-txt",
+    isEdit: true,
+    title: "13%税率价款",
+    value: "13%税率价款：{rate_priceAmount}",
+    name: "rate_priceAmount",
+    defaultValue: '13%税率价款'
+  },
+  {
+    type: "braid-txt",
+    isEdit: true,
+    title: "税金",
+    value: "税金：{rate_taxesAmount}",
+    name: "rate_taxesAmount",
+    defaultValue: '税金'
+  },
+  {
+    type: "braid-txt",
+    isEdit: true,
+    title: "价税合计",
+    value: "价税合计：{rate_priceAndTaxesAmount}",
+    name: "rate_priceAndTaxesAmount",
+    defaultValue: '价税合计'
+  },
+  {
+    type: "braid-txt",
+    isEdit: true,
+    title: "税率价款",
+    value: "税率价款：{rate_otherPriceAmount}",
+    name: "rate_otherPriceAmount",
+    defaultValue: '税率价款'
+  },
+  {
+    type: "braid-txt",
+    isEdit: true,
+    title: "税金",
+    value: "税金：{rate_otherTaxesAmount}",
+    name: "rate_otherTaxesAmount",
+    defaultValue: '税金'
+  },
+  {
+    type: "braid-txt",
+    isEdit: true,
+    title: "价税合计",
+    value: "价税合计：{rate_otherPriceAndTaxesAmount}",
+    name: "rate_otherPriceAndTaxesAmount",
+    defaultValue: '价税合计'
+  },
+  {
+    type: "braid-txt",
+    isEdit: true,
+    title: "价款",
+    value: "价款：{rate_totalPriceAmount}",
+    name: "rate_totalPriceAmount",
+    defaultValue: '价款'
+  },
+  {
+    type: "braid-txt",
+    isEdit: true,
+    title: "税金",
+    value: "税金：{rate_totalTaxesAmount}",
+    name: "rate_totalTaxesAmount",
+    defaultValue: '税金'
+  },
+  {
+    type: "braid-txt",
+    isEdit: true,
+    title: "价税合计",
+    value: "价税合计：{rate_totalPriceAndTaxesAmount}",
+    name: "rate_totalPriceAndTaxesAmount",
+    defaultValue: '价税合计'
+  },
+  {
+    type: "braid-txt",
+    isEdit: true,
+    title: "应付金额",
+    value: "应付金额：{rate_payAble}",
+    name: "rate_payAble",
+    defaultValue: '应付金额'
+  },
+  {
+    type: "braid-txt",
+    isEdit: true,
+    title: "已结金额",
+    value: "已结金额：{rate_amountSettled}",
+    name: "rate_amountSettled",
+    defaultValue: '已结金额'
+  },
+  {
+    type: "braid-txt",
+    isEdit: true,
+    title: "实付金额",
+    value: "实付金额：{rate_payment}",
+    name: "rate_payment",
+    defaultValue: '实付金额'
+  },
+
+  //  statementPrintDetail.owner     : owner_
+  {
+    type: "braid-txt",
+    isEdit: true,
+    title: "公司名称",
+    value: "公司名称：{owner_name}",
+    name: "owner_name",
+    defaultValue: '公司名称'
+  },
+  {
+    type: "braid-txt",
+    isEdit: true,
+    title: "开户行",
+    value: "开户行：{owner_bankName}",
+    name: "owner_bankName",
+    defaultValue: '开户行'
+  },
+  {
+    type: "braid-txt",
+    isEdit: true,
+    title: "税号",
+    value: "税号：{owner_creditCode}",
+    name: "owner_creditCode",
+    defaultValue: '税号'
+  },
+  {
+    type: "braid-txt",
+    isEdit: true,
+    title: "公司地点",
+    value: "公司地点：{owner_address}",
+    name: "owner_address",
+    defaultValue: '公司地点'
+  },
+  {
+    type: "braid-txt",
+    isEdit: true,
+    title: "账号",
+    value: "账号：{owner_bankAccount}",
+    name: "owner_bankAccount",
+    defaultValue: '账号'
+  },
+  {
+    type: "braid-txt",
+    isEdit: true,
+    title: "电话",
+    value: "电话：{owner_phone}",
+    name: "owner_phone",
+    defaultValue: '电话'
+  },
+
+
+  {type: "braid-txt", isEdit: true, title: "预算", value: "预算：", name: "", defaultValue: '预算'},
+  {type: "braid-txt", isEdit: true, title: "一级", value: "一级：", name: "", defaultValue: '一级'},
+  {type: "braid-txt", isEdit: true, title: "二级", value: "二级：", name: "", defaultValue: '二级'},
+  {type: "braid-txt", isEdit: true, title: "三级", value: "三级：", name: "", defaultValue: '三级'},
+
+  {type: "braid-txt", isEdit: true, title: "总经理", value: "总经理：", name: "", defaultValue: '总经理'},
+  {type: "braid-txt", isEdit: true, title: "财务经理", value: "财务经理：", name: "", defaultValue: '财务经理'},
+  {type: "braid-txt", isEdit: true, title: "结算主管", value: "结算主管：", name: "", defaultValue: '结算主管'},
+  {type: "braid-txt", isEdit: true, title: "结算会计", value: "结算会计：", name: "", defaultValue: '结算会计'},
+
+  // 第二页
+  {
+    type: "braid-html",
+    title: "分页2",
+    isEdit: true,
+    value: "{第2页/共3页}",
+    defaultValue: "<font ><span tdata='pageNO'>第2页</span>/<span tdata='pageCount'>共3页</span></font>",
+    style: {ItemType: 2, BottomMargin: 8,}
+  },
+  {type: "braid-txt", isEdit: true, title: "自定义文本", value: "", defaultValue: "自定义文本"},
+  {type: "braid-txt", isEdit: true, title: "标题", value: "{goodsTitle}", name: "goodsTitle",},
+  {type: "braid-txt", isEdit: true, title: "结算单号", value: "结算单号:{id}", name: "id", defaultValue: '结算单号'},
+  {
+    type: "braid-txt",
+    isEdit: true,
+    title: "合同号",
+    value: "合同号 : {contractNo}",
+    name: "contractNo",
+    defaultValue: '合同号'
+  },
+  {
+    type: "braid-txt",
+    isEdit: true,
+    title: "结算年月",
+    value: "结算年月 : {month}",
+    name: "month",
+    defaultValue: '结算年月'
+  },
+  {
+    type: "braid-txt",
+    isEdit: true,
+    title: "结算部门",
+    value: "结算部门 : {deptName}",
+    name: "deptName",
+    defaultValue: '结算部门'
+  },
+  {
+    type: "braid-txt",
+    isEdit: true,
+    title: "结算日期(开始)",
+    value: "结算日期 : {startDate}",
+    name: "startDate",
+    defaultValue: '结算日期'
+  },
+  {
+    type: "braid-txt",
+    isEdit: true,
+    title: "结算日期(结束)",
+    value: "- {endDate}",
+    name: "endDate",
+    defaultValue: '结算日期'
+  },
+  {
+    type: "braid-table", title: "商品明细", name: "goodsList", value: "{goodsList}", columnsAttr: [
       {title: "商品代码", value: "{商品代码}", name: "goodsCode"},
       {title: "商品名称", value: "{商品名称}", name: "goodsName"},
       {title: "扣点", value: "{扣点}", name: "settlementRate"},
@@ -215,184 +389,85 @@ export const OutStockOptions = [
       {title: "销售净额", value: "{销售净额}", name: "sellTrueAmount"},
       {title: "销售成本", value: "{销售成本}", name: "sellCostAmount"},
       {title: "折扣分摊", value: "{折扣分摊}", name: "discountAmount"}
-    ]},
+    ]
+  },
+
+
+  // 第三页
+  {
+    type: "braid-html",
+    title: "分页3",
+    isEdit: true,
+    value: "{第3页/共3页}",
+    defaultValue: "<font ><span tdata='pageNO'>第3页</span>/<span tdata='pageCount'>共3页</span></font>",
+    style: {ItemType: 2, BottomMargin: 8,}
+  },
+  {type: "braid-txt", isEdit: true, title: "自定义文本", value: "", defaultValue: "自定义文本"},
+  {type: "braid-txt", isEdit: true, title: "标题", value: "{feeTitle}", name: "feeTitle",},
+  {type: "braid-txt", isEdit: true, title: "结算单号", value: "结算单号:{id}", name: "id", defaultValue: '结算单号'},
+  {
+    type: "braid-txt",
+    isEdit: true,
+    title: "合同号",
+    value: "合同号 : {contractNo}",
+    name: "contractNo",
+    defaultValue: '合同号'
+  },
+  {
+    type: "braid-txt",
+    isEdit: true,
+    title: "供货商名称",
+    value: "供货商名称 : {trader_traderName}",
+    name: "trader_traderName",
+    defaultValue: '供货商名称'
+  },
+  {
+    type: "braid-txt",
+    isEdit: true,
+    title: "结算年月",
+    value: "结算年月 : {month}",
+    name: "month",
+    defaultValue: '结算年月'
+  },
+  {
+    type: "braid-txt",
+    isEdit: true,
+    title: "公司名称",
+    value: "公司名称 : {owner_name}",
+    name: "owner_name",
+    defaultValue: '公司名称'
+  },
+  {
+    type: "braid-txt",
+    isEdit: true,
+    title: "开户银行",
+    value: "开户银行 : {owner_bankName}",
+    name: "owner_bankName",
+    defaultValue: '开户银行'
+  },
+  {
+    type: "braid-txt",
+    isEdit: true,
+    title: "税号",
+    value: "税号 : {owner_creditCode}",
+    name: "owner_creditCode",
+    defaultValue: '税号'
+  },
+  {
+    type: "braid-txt",
+    isEdit: true,
+    title: "账号",
+    value: "账号 : {owner_bankAccount}",
+    name: "owner_bankAccount",
+    defaultValue: '账号'
+  },
+  {
+    type: "braid-table", title: "费用项目", name: "feeList", value: "{费用项目}", columnsAttr: [
+      {title: "费用项目", value: "{费用项目}", name: "feeName"},
+      {title: "金额", value: "{金额}", name: "feeAmount"},
+      {title: "扣款属性", value: "{扣款属性}", name: "type"},
+      {title: "扣款方式", value: "{扣款方式}", name: "method"},
+    ]
+  },
 ]
 
-/**
- * 入库单 模板设计选项
- */
-export const InStockOptions = [
-  {
-    type: 'braid-txt',
-    isEdit: 1,
-    title: '自定义文本',
-    value: '自定义文本',
-    defaultValue: '自定义文本',
-    name: ''
-  },
-  {
-    type: 'braid-txt',
-    isEdit: 0,
-    title: '公司名称',
-    value: '{公司名称}',
-    defaultValue: '科技公司',
-    name: 'companyName'
-  },
-  {
-    type: 'braid-txt',
-    isEdit: 1,
-    title: '入库单号',
-    value: '{入库单号}',
-    defaultValue: 'RK-1234567890',
-    name: 'purcheckCode'
-  },
-  {
-    type: 'bar-code',
-    isEdit: 1,
-    title: '单号条码',
-    value: '{单号}',
-    defaultValue: 'RK-1234567890',
-    name: 'stockoutCode'
-  },
-
-  {
-    type: 'braid-txt',
-    isEdit: 1,
-    title: '供应商/客户',
-    value: '{供应商/客户}',
-    defaultValue: '中国苹果',
-    name: 'unitName'
-  },
-  {
-    type: 'braid-txt',
-    isEdit: 1,
-    title: '采购业务员',
-    value: '{采购业务员}',
-    defaultValue: 'zj001',
-    name: 'purchaseSaleManName'
-  },
-  {
-    type: 'braid-txt',
-    isEdit: 1,
-    title: '入库类型',
-    value: '{入库类型}',
-    defaultValue: '采购入库',
-    name: 'purcheckType'
-  },
-  {
-    type: 'braid-txt',
-    isEdit: 1,
-    title: '入库仓库',
-    value: '{入库仓库}',
-    defaultValue: '成都仓库',
-    name: 'warehouseName'
-  },
-  {
-    type: 'braid-txt',
-    isEdit: 1,
-    title: '入库时间',
-    value: '{入库时间}',
-    defaultValue: '2020-08-27 12:00:00',
-    name: 'businessDate'
-  },
-  {
-    type: 'braid-txt',
-    isEdit: 1,
-    title: '制单人',
-    value: '{制单人}',
-    defaultValue: 'jz002',
-    name: 'createUserName'
-  },
-  {
-    type: 'braid-txt',
-    isEdit: 1,
-    title: '制单时间',
-    value: '{制单时间}',
-    defaultValue: '2020-08-27 12:00:00',
-    name: 'created'
-  },
-  {
-    type: 'braid-txt',
-    isEdit: 1,
-    title: '摘要',
-    value: '{摘要}',
-    defaultValue: '北京采购入库成都摘要',
-    name: 'remark'
-  },
-  {
-    type: 'braid-txt',
-    isEdit: 1,
-    title: '合计金额',
-    value: '{合计金额}',
-    defaultValue: '12331.00',
-    name: 'totalPrice'
-  },
-  {
-    type: 'braid-html',
-    isEdit: 1,
-    title: '分页',
-    value: '{第##页/共##页}',
-    defaultValue: '<font ><span tdata=\'pageNO\'>第##页</span>/<span tdata=\'pageCount\'>共##页</span></font>',
-    name: ''
-  },
-  {
-    type: 'braid-table',
-    isEdit: 0,
-    title: '入库商品明细',
-    name: 'details',
-    value: '{details}',
-    style: {},
-    defaultValue: [
-      {
-        productName: '苹果ipone11pro',
-        skuName: 'iphone11pro256g',
-        specModel: '165L',
-        quantity: 3,
-        snCode: '[SPP1Y79G1]',
-        price: '12.00'
-      },
-      {
-        productName: '苹果ipone11pro',
-        skuName: 'iphone11pro124g',
-        specModel: '165L',
-        quantity: 3,
-        snCode: '[SPP1Y79G1] ',
-        price: '12.00'
-      }
-
-    ],
-    columnsAttr: [
-      {
-        title: '产品名称',
-        value: '{产品名称}',
-        name: 'productName',
-      },
-      {
-        title: 'sku名称',
-        value: '{sku名称}',
-        name: 'skuName',
-      },
-      {
-        title: '规格型号',
-        value: '{规格型号}',
-        name: 'specModel'
-      },
-      {
-        title: '数量',
-        value: '{数量}',
-        name: 'quantity'
-      },
-      {
-        title: '单价',
-        value: '{单价}',
-        name: 'price'
-      },
-      {
-        title: '产品序列号',
-        value: '{产品序列号}',
-        name: 'snCode',
-      }
-    ],
-    columns: []
-  }
-]
