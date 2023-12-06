@@ -18,7 +18,7 @@
           <div style="display: flex;justify-content: space-between;width: 100%;" >
             <span>组件</span>
             <div style="margin-right: 10px">
-              <el-button size="mini" @click.stop="addLabelBtn">新增组件</el-button>
+<!--              <el-button size="mini" @click.stop="addLabelBtn">新增组件</el-button>-->
             </div>
           </div>
         </template>

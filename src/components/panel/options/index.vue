@@ -1,17 +1,19 @@
 <template>
   <div class="options-box">
     <template v-for="(item,index) in optionItems">
+<!--       <span style="margin-left: 10px" @click.stop="deleteLabel(item)"><i class="el-icon-delete"></i></span>-->
       <el-button v-if="item.type == 'braid-table'" size="mini" @click="(e)=>{addTable(e,item,index)}">
         {{item.title }}
-        <span style="margin-left: 10px" @click.stop="deleteLabel(item)"><i class="el-icon-delete"></i></span>
+
       </el-button>
+<!--      <span style="margin-left: 10px" @click.stop="deleteLabel(item)"><i class="el-icon-delete"></i></span>-->
       <el-button
         v-else
         size="mini"
         :key="index"
         @click="(e) => {addTempItem(e,item)}"
       >{{ item.title }}
-        <span style="margin-left: 10px" @click.stop="deleteLabel(item)"><i class="el-icon-delete"></i></span>
+
       </el-button>
     </template>
     <el-dialog title="选择列表项" :visible.sync="visible">
