@@ -5,7 +5,9 @@
       <el-row>
         <el-col :span="12">
           <el-form-item label="宽度">
-            <el-input-number
+              <el-input-number
+                      :controls="false"
+
               v-model="activeElement.width"
               controls-position="right"
               :min="1"
@@ -15,7 +17,8 @@
         </el-col>
         <el-col :span="12">
           <el-form-item label="高度">
-            <el-input-number
+              <el-input-number
+                      :controls="false"
               v-model="activeElement.height"
               controls-position="right"
               :min="1"
@@ -27,7 +30,8 @@
       <el-row>
         <el-col :span="12">
           <el-form-item label="横坐标">
-            <el-input-number
+              <el-input-number
+                      :controls="false"
               v-model="activeElement.left"
               controls-position="right"
               :min="0"
@@ -37,7 +41,8 @@
         </el-col>
         <el-col :span="12">
           <el-form-item label="纵坐标">
-            <el-input-number
+              <el-input-number
+                      :controls="false"
               v-model="activeElement.top"
               controls-position="right"
               :min="0"
@@ -50,7 +55,8 @@
       <el-row>
         <el-col :span="12">
           <el-form-item label="字号">
-            <el-input-number
+              <el-input-number
+                      :controls="false"
               :disabled="activeElement.style.FontSize===undefined"
               v-model="activeElement.style.FontSize"
               controls-position="right"
@@ -150,7 +156,8 @@
         </el-col>
         <el-col :span="12">
           <el-form-item label="下边距">
-            <el-input-number
+              <el-input-number
+                      :controls="false"
               :disabled="activeElement.style.BottomMargin===undefined || !activeElement.style.AutoHeight"
               v-model="activeElement.style.BottomMargin"
               controls-position="right"
