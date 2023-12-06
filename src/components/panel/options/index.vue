@@ -94,7 +94,7 @@ export default {
       })
     },
     deleteLabel(item){
-      this.$emit("deleteLabel",item.id || '')
+      this.$emit("deleteLabel",item)
     },
   },
 }
