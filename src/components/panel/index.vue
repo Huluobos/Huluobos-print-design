@@ -15,21 +15,15 @@
       </el-collapse-item>
       <el-collapse-item name="3">
         <template slot="title">
-
           <div style="display: flex;justify-content: space-between;width: 100%;" >
             <span>组件</span>
             <div style="margin-right: 10px">
               <el-button size="mini" @click.stop="addLabelBtn">新增组件</el-button>
             </div>
           </div>
-
-
-
-
-
         </template>
 
-        <options />
+        <options @deleteLabel="deleteLabel"/>
       </el-collapse-item>
       <el-collapse-item name="4">
         <template slot="title">
@@ -85,6 +79,9 @@ export default {
     }
   },
   methods:{
+    deleteLabel(each){
+      this.$emit("deleteLabel",each)
+    },
     addLabelBtn(){
       this.visible = true
     },

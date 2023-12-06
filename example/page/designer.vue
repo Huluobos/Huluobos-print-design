@@ -1,5 +1,5 @@
 <template>
-  <HuluobosPrintDesign ref="printDesigner" :temp-value="value" :widget-options="widgets" @save="handleSave" @addLabel="addLabel"/>
+  <HuluobosPrintDesign ref="printDesigner" :temp-value="value" :widget-options="widgets" @save="handleSave" @addLabel="addLabel"  @deleteLabel="deleteLabel"/>
 </template>
 <script>
 import { OutStockOptions, InStockOptions } from '../data/options'
@@ -39,6 +39,9 @@ export default {
     addLabel(label){
       console.log("label",label)
       // label
+    },
+    deleteLabel(each){
+      console.log("each",each)
     },
     // 手动初始话模板数据
     initTemp(){
