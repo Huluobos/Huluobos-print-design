@@ -2,8 +2,8 @@
   <div id="viewport" data-type="viewport" class="holder">
     <div
       :style="{
-        height: page.height + 'px',
-        width: page.width + 'px',
+        height: page.height + 'mm',
+        width: page.width + 'mm',
         backgroundImage: 'url('+backImg+')'
       }"
       class="screen"
