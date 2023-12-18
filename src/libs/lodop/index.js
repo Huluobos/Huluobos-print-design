@@ -219,7 +219,6 @@ function _AddPrintItem(LODOP, tempItem, pageIndex = 0) {
       break
     case 'braid-descriptions': {
       let html = descriptionsTempTohtml(printItem.valueAttr? printItem.valueAttr : [],printItem.defaultValue, printItem.style)
-      console.log(html)
       LODOP.ADD_PRINT_TABLE(
           printItem.top,
           printItem.left,
