@@ -1,6 +1,6 @@
 import getLodop from './LodopFuncs'
 import cloneDeep from 'lodash/cloneDeep'
-import { tableTempTohtml, imageTempTohtml, strTempToValue, htmlTempTohtml } from './tools'
+import {tableTempTohtml, imageTempTohtml, strTempToValue, htmlTempTohtml, descriptionsTempTohtml} from './tools'
 
 let strCompanyName = ''
 let strLicense = ''
@@ -11,7 +11,7 @@ export default { print, preview, previewTemp, setLicenses }
 
 /**
  * 设置Lodop打印软件产品注册信息
- * @param {*} licenseInfo 
+ * @param {*} licenseInfo
  */
 function setLicenses(licenseInfo) {
   strCompanyName = licenseInfo.strCompanyName || ''
@@ -103,8 +103,6 @@ function previewTemp(temp) {
  */
 function _CreateLodop(pageName, width, height, pageWidth = 0, pageHeight = 0, top = 0, left = 0) {
   let LODOP = getLodop()
-
-  // console.log(strCompanyName, strLicense, strLicenseA, strLicenseB)
 
   // 设置软件产品注册信息
   LODOP.SET_LICENSES(strCompanyName, strLicense, strLicenseA, strLicenseB)
@@ -198,28 +196,38 @@ function _AddPrintItem(LODOP, tempItem, pageIndex = 0) {
         printItem.value
       )
       break
-    case 'braid-html':
-      {
-        let html = htmlTempTohtml(printItem.defaultValue, printItem.style)
-        if (lodopStyle.AutoHeight) {
-          LODOP.ADD_PRINT_HTM(
+    case 'braid-html': {
+      let html = htmlTempTohtml(printItem.defaultValue, printItem.style)
+      if (lodopStyle.AutoHeight) {
+        LODOP.ADD_PRINT_HTM(
             printItem.top,
             printItem.left,
             printItem.width,
             'BottomMargin:' + lodopStyle.BottomMargin + 'mm',
             html
-          )
-        } else {
-          LODOP.ADD_PRINT_HTM(
+        )
+      } else {
+        LODOP.ADD_PRINT_HTM(
             printItem.top,
             printItem.left,
             printItem.width,
             printItem.height,
             html
-          )
-
-        }
+        )
       }
+    }
+      break
+    case 'braid-descriptions': {
+      let html = descriptionsTempTohtml(printItem.valueAttr? printItem.valueAttr : [],printItem.defaultValue, printItem.style)
+      console.log(html)
+      LODOP.ADD_PRINT_TABLE(
+          printItem.top,
+          printItem.left,
+          printItem.width,
+          printItem.height,
+          html
+      )
+    }
       break
     case 'braid-table':
       {

@@ -1,26 +1,7 @@
 import HuluobosPrintDesign from './App.vue'
-import {
-  Button,
-  Scrollbar,
-  Input,
-  InputNumber,
-  Switch,
-  Select,
-  Option,
-  RadioGroup,
-  Radio,
-  Popover,
-  Checkbox,
-  CheckboxGroup,
-  Row,
-  Col,
-  Collapse,
-  CollapseItem,
-  Form,
-  FormItem,
-  Tag,
-  ColorPicker,
-  Dialog,
+import {Button, Scrollbar, Input, InputNumber, Switch, Select, Option, RadioGroup, Radio, Popover, Checkbox,
+  CheckboxGroup, Row, Col, Collapse, CollapseItem, Form, FormItem, Tag, ColorPicker,
+  Dialog,Descriptions,DescriptionsItem,
 } from 'element-ui';
 import './assets/style/index.scss'
 // LODOP打印服务
@@ -51,7 +32,8 @@ const install = function (Vue, opts = {}) {
   Vue.component(Tag.name, Tag)
   Vue.component(ColorPicker.name, ColorPicker)
   Vue.component(Dialog.name, Dialog )
-
+  Vue.component(Descriptions.name, Descriptions  )
+  Vue.component(DescriptionsItem.name, DescriptionsItem  )
 
   Vue.use(widgets);
   Vue.component('HuluobosPrintDesign', HuluobosPrintDesign)
