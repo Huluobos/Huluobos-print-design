@@ -2,7 +2,45 @@
  * 出库单 模板设计选项
  */
 export const OutStockOptions =[
-
+  {
+    type: "braid-txt",
+    isEdit: true,
+    title: "自定义文本",
+    value: "",
+  },
+  {
+    type: "braid-image",
+    title: "二维码",
+    value: "http://192.168.7.229/syy/file/files/view/5f9fb42dabebb4049ffbd019"
+  },
+  {
+    type: "braid-descriptions", title: "描述列表", isEdit: true, column: 3, size: 'small', border:true,
+    valueAttr:[
+      [{label: "商户名称", value: "{商户名称}", name: "traderName", span: 3}, {label:"品牌",value:"{品牌}",name:"brandName",span:1}],
+      [{label:"证件号码",value:"{证件号码}",name:"traderCardNo",span:3},{label:"合同号",value:"{合同号}",name:"contractNo",span:1}],
+      [{label:"所属商场",value:"{所属商场}",name:"mallName",span:1},{label:"铺位名称",value:"{铺位名称}",name:"shopName",span:1},{label:"面积",value:"{面积}",name:"useArea",span:1}],
+      [{label:"缴费类型",value:"{缴费类型}",name:"feeName",span:1},{label:"缴费期限",value:"{缴费期限}",name:"start_EndDate",span:3}],
+      [{label:"应收单价",value:"{应收单价}",name:"price",span:1},{label:"应收金额",value:"{应收金额}",name:"receivable",span:1},{label:"实收金额",value:"{实收金额}",name:"payment",span:1}],
+      [{label:"金额大写",value:"{金额大写}",name:"moneyUppercase",span:3},{label:"金额小写",value:"{金额小写}",name:"payment",span:1}],
+      [{label:"缴费明细",value:"{缴费明细}",name:"feeMarkName",span:5}],
+      [{label:"备注",value:"{备注}",name:"remark",span:5}],
+    ],
+  },
+  {
+    type: "braid-txt",
+    isEdit: true,
+    title: "时间",
+    value: "{dateTime}",
+    name: "dateTime",
+  },
+  {
+    type: "braid-txt",
+    isEdit: true,
+    title: "编号",
+    value: "编号：{dateTime}",
+    name: "id",
+  },
+  //
   // 第一页
   {
     type: "braid-html",
