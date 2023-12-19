@@ -89,7 +89,7 @@ export const descriptionsTempTohtml = (attr, data, style) => {
         html += item.label
         html += '</th>'
         html += '<td ' + 'colspan="' + span + '" style="padding: '+style.Padding+'"><span>'
-        html += item.value
+        html += data[item.name] || "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
         html += '</span></td>'
       })
       html += '</tr>'
