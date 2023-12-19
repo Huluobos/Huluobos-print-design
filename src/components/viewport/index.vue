@@ -20,7 +20,7 @@
         :data-uuid="val.uuid"
         class="layer"
       ></component>
-
+<!--      <div style="background:none;width: 182mm;height: 81mm;position: absolute;top: 50%;left: 50%;transform: translateX(-50%) translateY(-50%);border: 2px solid #ff6700;z-index: 1"></div>-->
       <!-- 参考线 -->
       <!-- <ref /> -->
 

@@ -25,6 +25,7 @@ function setLicenses(licenseInfo) {
  * @param {*Array} data 打印数据
  */
 function print(temp, data) {
+
   let LODOP = _CreateLodop(temp.title, temp.width, temp.height, temp.pageWidth, temp.pageHeight)
   let tempItems = cloneDeep(temp.tempItems)
   let printContent = _TempParser(tempItems, data)
