@@ -3,7 +3,7 @@ import cloneDeep from 'lodash/cloneDeep'
 import {tableTempTohtml, imageTempTohtml, strTempToValue, htmlTempTohtml, descriptionsTempTohtml} from './tools'
 
 let strCompanyName = ''
-let strLicense = ''
+let strLicense = 'C784E10C2D0851227AE6BC2F405565747C8'
 let strLicenseA = ''
 let strLicenseB = ''
 
@@ -104,14 +104,17 @@ function previewTemp(temp) {
  */
 function _CreateLodop(pageName, width, height, pageWidth = 0, pageHeight = 0, top = 0, left = 0) {
   let LODOP = getLodop()
-
+  LODOP.SET_LICENSES("","C784E10C2D0851227AE6BC2F405565747C8","","");
   // 设置软件产品注册信息
   LODOP.SET_LICENSES(strCompanyName, strLicense, strLicenseA, strLicenseB)
+  // setTimeout(()=>{
+    LODOP.SET_LICENSES("","C784E10C2D0851227AE6BC2F405565747C8","","");
+    LODOP.PRINT_INITA(top, left, width, height, pageName)
+    LODOP.SET_PRINT_PAGESIZE(1, pageWidth ? pageWidth + 'mm' : 0, pageHeight ? pageHeight + 'mm' : 0, '')
+    return LODOP
+  // })
 
-  LODOP.PRINT_INITA(top, left, width, height, pageName)
-  LODOP.SET_PRINT_PAGESIZE(1, pageWidth ? pageWidth + 'mm' : 0, pageHeight ? pageHeight + 'mm' : 0, '')
 
-  return LODOP
 }
 
 /**

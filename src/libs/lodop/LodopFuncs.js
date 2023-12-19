@@ -159,4 +159,4 @@ function getLodop(oOBJECT, oEMBED) {
 	}
 }
 
-export default getLodop 
+export default getLodop
