@@ -23,7 +23,6 @@ export const tempToPrint = (temp, data) => {
  * @param data 表格数据
  */
 export const tableTempTohtml = (columns, data, style) => {
-
     // 表格全局样式
     let styleStr = 'text-align:' + style.Alignment + ';'
     styleStr += 'font-size:' + style.FontSize + 'pt;'
@@ -79,9 +78,11 @@ export const descriptionsTempTohtml = (attr, data, style) => {
     styleStr += 'color:' + style.FontColor + ';'
 
     let html = '<style> table td,table th {word-break: break-all;box-sizing:border-box;border:1px solid ' + style.BorderColor + '}</style>'
-    html += '<table border=1 width="100%" cellspacing="0" frame="box" cellpadding="2" style="border-collapse:collapse;' + styleStr + '" bordercolor="' + style.BorderColor + '">'
-    html += '<tbody>'
+
+    html += '<table border="1" width="100%" cellspacing="0" frame="box" cellpadding="2" style="border-collapse:collapse;' + styleStr + '" bordercolor="' + style.BorderColor + '">'
+    html += '<thead></thead><tbody>'
     attr.forEach(each => {
+
       html += '<tr>'
       each.forEach(item=>{
         let span = Number(item.span)

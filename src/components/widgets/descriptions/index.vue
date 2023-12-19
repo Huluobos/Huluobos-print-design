@@ -4,8 +4,8 @@
       :style="{
      left: val.left + 'px' ,
       top:  val.top + 'px',
-      width: val.width + 'mm',
-      height: val.height + 'mm',
+      width: val.width + 'px',
+      height: val.height + 'px',
       textAlign: val.style.Alignment,
       fontSize: val.style.FontSize + 'pt',
       color: val.style.FontColor,
@@ -38,8 +38,8 @@ export default {
     isEdit: false,
     dragable: true, // 是否可拖拽
     resizable: true, // 尺寸是否可变
-    width: 182,
-    height: 81,
+    width: 690,
+    height: 307,
     left: 50,
     top: 10,
     title: 'descriptions',
@@ -56,7 +56,7 @@ export default {
       BorderColor: '#000000',
       AutoHeight: false, // 高度自动（模板在该元素位置以下的元素都关联打印）
       BottomMargin: 0, // 距离下边距
-      Padding:'2.8mm', // 距离下边距
+      Padding:'10.5px', // 距离下边距
     },
   },
   props: [
