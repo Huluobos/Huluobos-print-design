@@ -12,13 +12,16 @@
     }"
       style="position:absolute;overflow:hidden"
   >
-    <table border="1" width="100%" cellspacing="0" cellpadding="2" style="border-collapse:collapse;"
-           bordercolor="#000000">
+    <table border="1" width="100%" cellspacing="0" cellpadding="2" style="border-collapse:collapse;" height="305" bordercolor="#000000">
       <tbody>
       <tr v-for="(item,index) in (val.valueAttr || val.defaultValue)" :key="index+'des'">
         <template v-for="(each,ins) in item">
-          <th colspan="1" :key="index+'desth' + ins" :style="{padding: val.style.Padding}">{{ each.label }}</th>
-          <td :colspan="each.span" :key="index+'destd' + ins" :style="{padding: val.style.Padding}"><span>{{ each.name }}</span></td>
+          <th colspan="1" :key="index+'desth' + ins" >
+            <div >{{ each.label }}</div>
+          </th>
+          <td :colspan="each.span" :key="index+'destd' + ins" >
+            <div>{{ each.name }}</div>
+          </td>
         </template>
       </tr>
       </tbody>
@@ -56,7 +59,6 @@ export default {
       BorderColor: '#000000',
       AutoHeight: false, // 高度自动（模板在该元素位置以下的元素都关联打印）
       BottomMargin: 0, // 距离下边距
-      Padding:'10.5px', // 距离下边距
     },
   },
   props: [
