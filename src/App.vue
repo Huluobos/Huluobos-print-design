@@ -3,7 +3,7 @@
     <viewport class="kr-designer-view" />
     <div class="kr-designer-tool">
       <el-scrollbar class="kr-designer-tool_con">
-        <panel class="control-panel" @addLabel="addLabel" @deleteLabel="deleteLabel"/>
+        <panel class="control-panel" />
       </el-scrollbar>
       <div class="kr-designer-tool_bar">
         <el-button size="mini" type="success" @click="saveTemp">保存</el-button>
@@ -39,12 +39,6 @@ export default {
     saveTemp() {
       let page = this.$vptd.state.page
       this.$emit('save', cloneDeep(page))
-    },
-    addLabel(label){
-      this.$emit('addLabel',label)
-    },
-    deleteLabel(id){
-      this.$emit('deleteLabel',id)
     },
     // 预览模板
     previewTemp() {

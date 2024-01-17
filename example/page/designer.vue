@@ -1,5 +1,5 @@
 <template>
-  <HuluobosPrintDesign ref="printDesigner" :temp-value="value" :widget-options="widgets" @save="handleSave" @addLabel="addLabel"  @deleteLabel="deleteLabel"/>
+  <HuluobosPrintDesign ref="printDesigner" :temp-value="value" :widget-options="widgets" @save="handleSave" />
 </template>
 <script>
 import { OutStockOptions, InStockOptions } from '../data/options'
@@ -35,13 +35,6 @@ export default {
       tempList[this.index] = data
       localStorage.setItem('tempList', JSON.stringify(tempList))
       this.$router.back()
-    },
-    addLabel(label){
-      console.log("label",label)
-      // label
-    },
-    deleteLabel(each){
-      console.log("each",each)
     },
     // 手动初始话模板数据
     initTemp(){

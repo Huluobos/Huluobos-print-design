@@ -1,7 +1,6 @@
 # Huluobos-print-design
 
 基于 kr-print-designer 可查看 kr-print-designer 文档
-但是已经在 kr-print-designer 增加了不少功能和组件
 
 V1.2.1 增加了 明细表  descriptions
 
@@ -52,3 +51,4 @@ demo.vue
 ## 优化日志
 
   > 设计器添加表格时改用弹窗显示选择展示列 (src/components/panel/options/index.vue)
+
