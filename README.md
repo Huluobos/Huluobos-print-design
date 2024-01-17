@@ -1,6 +1,7 @@
 # Huluobos-print-design
 
 基于 kr-print-designer 可查看 kr-print-designer 文档
+但是已经在 kr-print-designer 增加了不少功能和组件
 
 ---
 
