@@ -77,9 +77,11 @@ export const descriptionsTempTohtml = (attr, data, style) => {
     styleStr += 'font-size:' + style.FontSize + 'pt;'
     styleStr += 'color:' + style.FontColor + ';'
 
-    let html = '<style> table td,table th {word-break: break-all;box-sizing:border-box;border:1px solid ' + style.BorderColor + '}</style>'
-
-    html += '<table border="1" width="100%" cellspacing="0" frame="box" cellpadding="2" style="border-collapse:collapse;' + styleStr + '" bordercolor="' + style.BorderColor + '">'
+    let html = '<style> table td,table th {height:100%;ord-break: break-all;box-sizing:border-box;border:1px solid ' + style.BorderColor + '} </style>'
+    if(!style.AutoHeight){
+      html +='<style>table{height:100%}</style>'
+    }
+    html += '<table border="1" width="100%" cellspacing="0" frame="box" cellpadding="2" style="height:'+ style.height + 'px;border-collapse:collapse;' + styleStr + '" bordercolor="' + style.BorderColor + '">'
     html += '<thead></thead><tbody>'
     attr.forEach(each => {
 

@@ -51,4 +51,5 @@ demo.vue
 ## 优化日志
 
   > 设计器添加表格时改用弹窗显示选择展示列 (src/components/panel/options/index.vue)
-
+ 
+  > 描述列表增加高度 (src/components/widgets/descriptions/index.vue)
