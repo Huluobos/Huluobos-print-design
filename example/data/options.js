@@ -2,6 +2,7 @@
  * 出库单 模板设计选项
  */
 export const OutStockOptions =[
+  {"type":"braid-descriptions","title":"描述列表","name":"feeDetail","value":"{描述列表}","isEdit":true,"column":3,"size":"small","border":true,"valueAttr":[[{"label":"商户名称","value":"{商户名称}","name":"traderName","span":3},{"label":"品牌","value":"{品牌}","name":"brandName","span":1}],[{"label":"证件号码","value":"{证件号码}","name":"traderCode","span":3},{"label":"铺位名称","value":"{铺位名称}","name":"shopName","span":1}],[{"label":"费用名称","value":"{费用名称}","name":"feeName","span":1},{"label":"费用内容","value":"{费用内容}","name":"feeMarkName","span":1},{"label":"应收金额","value":"{应收金额}","name":"receivable","span":1}],[{"label":"金额大写","value":"{金额大写}","name":"moneyUppercase","span":3},{"label":"实收金额","value":"{实收金额}","name":"payment","span":1}],[{"label":"缴费期限","value":"{缴费期限}","name":"start_EndDate","span":5}],[{"label":"备注","value":"{备注}","name":"remark","span":5}]]},
   {
     type: "braid-txt",
     isEdit: true,

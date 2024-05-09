@@ -12,7 +12,7 @@
     }"
       style="position:absolute;overflow:hidden"
   >
-    <table border="1" width="100%" cellspacing="0" cellpadding="2" style="border-collapse:collapse;" height="305" bordercolor="#000000">
+    <table border="1" width="100%" cellspacing="0" cellpadding="2" style="border-collapse:collapse;" :height="val.height" bordercolor="#000000">
       <tbody>
       <tr v-for="(item,index) in (val.valueAttr || val.defaultValue)" :key="index+'des'">
         <template v-for="(each,ins) in item">
