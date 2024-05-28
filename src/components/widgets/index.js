@@ -6,9 +6,11 @@ import table from './table/index.vue'
 import image from './image/index.vue'
 import html from './html/index.vue'
 import descriptions from './descriptions/index.vue'
+import taskList from './taskList/index.vue'
 
 
 const install = function (Vue) {
+  Vue.component(taskList.name, taskList)
   Vue.component(descriptions.name, descriptions)
   Vue.component(braidTxt.name, braidTxt)
   Vue.component(barCode.name, barCode)
@@ -19,6 +21,7 @@ const install = function (Vue) {
 
 const getWidgetsSetting = function () {
   return {
+    [taskList.name]: taskList.setting,
     [descriptions.name]: descriptions.setting,
     [braidTxt.name]: braidTxt.setting,
     [barCode.name]: barCode.setting,

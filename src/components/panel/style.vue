@@ -77,32 +77,35 @@
         </el-col>
       </el-row>
       <el-row>
-        <el-col :span="8">
-          <el-form-item label="字体颜色">
-            <el-color-picker
-              :disabled="activeElement.style.FontColor===undefined"
-              v-model="activeElement.style.FontColor"
-            ></el-color-picker>
-          </el-form-item>
-        </el-col>
-        <el-col :span="8">
-          <el-form-item label="边框颜色">
-            <el-color-picker
-              :disabled="activeElement.style.BorderColor===undefined"
-              v-model="activeElement.style.BorderColor"
-            ></el-color-picker>
-          </el-form-item>
-        </el-col>
-        <el-col :span="8">
-          <el-form-item label="条码值">
-            <el-switch
-              :disabled="activeElement.style.ShowBarText===undefined"
-              v-model="activeElement.style.ShowBarText"
-              :active-value="true"
-              :inactive-value="false"
-            ></el-switch>
-          </el-form-item>
-        </el-col>
+<!--        <el-col :span="8">-->
+<!--          <el-form-item label="字体颜色">-->
+<!--            <el-color-picker-->
+<!--              :disabled="activeElement.style.FontColor===undefined"-->
+<!--              v-model="activeElement.style.FontColor"-->
+<!--            ></el-color-picker>-->
+<!--          </el-form-item>-->
+<!--        </el-col>-->
+<!--        <el-col :span="8">-->
+<!--          <el-form-item label="边框颜色">-->
+<!--            <el-color-picker-->
+<!--              v-model="activeElement.style.BorderColor"-->
+<!--            ></el-color-picker>-->
+<!--            <el-color-picker-->
+<!--              :disabled="activeElement.style.BorderColor===undefined"-->
+<!--              v-model="activeElement.style.BorderColor"-->
+<!--            ></el-color-picker>-->
+<!--          </el-form-item>-->
+<!--        </el-col>-->
+<!--        <el-col :span="8">-->
+<!--          <el-form-item label="条码值">-->
+<!--            <el-switch-->
+<!--              :disabled="activeElement.style.ShowBarText===undefined"-->
+<!--              v-model="activeElement.style.ShowBarText"-->
+<!--              :active-value="true"-->
+<!--              :inactive-value="false"-->
+<!--            ></el-switch>-->
+<!--          </el-form-item>-->
+<!--        </el-col>-->
       </el-row>
       <el-row>
         <el-form-item label="对齐方式">
@@ -117,33 +120,33 @@
         </el-form-item>
       </el-row>
       <el-row>
-        <el-col :span="12">
-          <el-form-item label="条码类型">
-            <el-select
-              :disabled="activeElement.style.codeType===undefined"
-              v-model="activeElement.style.codeType"
-              class="min-input"
-            >
-              <el-option v-for="val in codeTypeArray" :key="val" :label="val" :value="val" />
-            </el-select>
-          </el-form-item>
-        </el-col>
-        <el-col :span="12">
-          <el-form-item label="打印类型">
-            <el-select
-              :disabled="activeElement.style.ItemType===undefined"
-              v-model="activeElement.style.ItemType"
-              class="min-input"
-            >
-              <el-option
-                v-for="val in itemTypeArray"
-                :key="val.value"
-                :label="val.label"
-                :value="val.value"
-              />
-            </el-select>
-          </el-form-item>
-        </el-col>
+<!--        <el-col :span="12">-->
+<!--          <el-form-item label="条码类型">-->
+<!--            <el-select-->
+<!--              :disabled="activeElement.style.codeType===undefined"-->
+<!--              v-model="activeElement.style.codeType"-->
+<!--              class="min-input"-->
+<!--            >-->
+<!--              <el-option v-for="val in codeTypeArray" :key="val" :label="val" :value="val" />-->
+<!--            </el-select>-->
+<!--          </el-form-item>-->
+<!--        </el-col>-->
+<!--        <el-col :span="12">-->
+<!--          <el-form-item label="打印类型">-->
+<!--            <el-select-->
+<!--              :disabled="activeElement.style.ItemType===undefined"-->
+<!--              v-model="activeElement.style.ItemType"-->
+<!--              class="min-input"-->
+<!--            >-->
+<!--              <el-option-->
+<!--                v-for="val in itemTypeArray"-->
+<!--                :key="val.value"-->
+<!--                :label="val.label"-->
+<!--                :value="val.value"-->
+<!--              />-->
+<!--            </el-select>-->
+<!--          </el-form-item>-->
+<!--        </el-col>-->
         <el-col :span="12">
           <el-form-item label="高度自动">
             <el-switch

@@ -1,6 +1,6 @@
 import getLodop from './LodopFuncs'
 import cloneDeep from 'lodash/cloneDeep'
-import {tableTempTohtml, imageTempTohtml, strTempToValue, htmlTempTohtml, descriptionsTempTohtml} from './tools'
+import {tableTempTohtml, imageTempTohtml, strTempToValue, htmlTempTohtml, descriptionsTempTohtml,taskListTempTohtml } from './tools'
 
 let strCompanyName = ''
 let strLicense = 'C784E10C2D0851227AE6BC2F405565747C8'
@@ -217,6 +217,30 @@ function _AddPrintItem(LODOP, tempItem, pageIndex = 0) {
             printItem.width,
             printItem.height,
             html
+        )
+      }
+    }
+      break
+    case 'braid-taskList': {
+      let html = taskListTempTohtml(printItem)
+      // AutoHeight 只在这用就好， widgets 下的vue文件盒tools.js 里面都用 height 就好
+      console.log("打印taskList奥利给",printItem,lodopStyle,)
+      console.log("打印taskList奥利给",html)
+      if (lodopStyle.AutoHeight) {
+        LODOP.ADD_PRINT_HTM(
+          printItem.top,
+          printItem.left,
+          printItem.width,
+          'BottomMargin:' + lodopStyle.BottomMargin + 'mm',
+          html
+        )
+      } else {
+        LODOP.ADD_PRINT_HTM(
+          printItem.top,
+          printItem.left,
+          printItem.width,
+          printItem.height,
+          html
         )
       }
     }
