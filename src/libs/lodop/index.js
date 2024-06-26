@@ -224,9 +224,8 @@ function _AddPrintItem(LODOP, tempItem, pageIndex = 0) {
     case 'braid-taskList': {
       let html = taskListTempTohtml(printItem)
       // AutoHeight 只在这用就好， widgets 下的vue文件盒tools.js 里面都用 height 就好
-      console.log("打印taskList奥利给",printItem,lodopStyle,)
-      console.log("打印taskList奥利给",html)
       if (lodopStyle.AutoHeight) {
+        // LODOP.NewPage()
         LODOP.ADD_PRINT_HTM(
           printItem.top,
           printItem.left,
