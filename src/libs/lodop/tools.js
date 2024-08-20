@@ -110,7 +110,7 @@ export const descriptionsTempTohtml = (attr, data, style) => {
   styleStr += 'font-size:' + style.FontSize + 'pt;'
   styleStr += 'color:' + style.FontColor + ';'
 
-  let html = '<style> table td,table th {height:100%;ord-break: break-all;box-sizing:border-box;border:1px solid ' + style.BorderColor + '} </style>'
+  let html = '<style> table td,table th {height:100%;word-break: break-all;box-sizing:border-box;border:1px solid ' + style.BorderColor + '} </style>'
   if (!style.AutoHeight) {
     html += '<style>table{height:100%}</style>'
   }
