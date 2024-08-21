@@ -48,6 +48,8 @@ export default {
     name: '',
     style: {
       zIndex: 0,
+      AutoHeight: false, // 高度自动（模板在该元素位置以下的元素都关联打印）
+      BottomMargin: 0, // 距离下边距
       FontSize: 9,
       FontColor: '#000000',
       Bold: false, // 1代表粗体，0代表非粗体

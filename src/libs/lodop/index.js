@@ -182,14 +182,24 @@ function _AddPrintItem(LODOP, tempItem, pageIndex = 0) {
   // 添加打印项
   switch (printItem.type) {
     case 'braid-txt':
-      LODOP.ADD_PRINT_TEXT(
-        printItem.top,
-        printItem.left,
-        printItem.width,
-        printItem.height,
-        printItem.value
-      )
-      console.log(printItem)
+      if (lodopStyle.AutoHeight) {
+        LODOP.ADD_PRINT_TEXT(
+          printItem.top,
+          printItem.left,
+          printItem.width,
+          'BottomMargin:' + lodopStyle.BottomMargin + 'mm',
+          printItem.value
+        )
+      } else {
+        LODOP.ADD_PRINT_TEXT(
+          printItem.top,
+          printItem.left,
+          printItem.width,
+          printItem.height,
+          printItem.value
+        )
+      }
+
       break
     case 'bar-code':
       LODOP.ADD_PRINT_BARCODE(
@@ -233,8 +243,7 @@ function _AddPrintItem(LODOP, tempItem, pageIndex = 0) {
           'BottomMargin:' + lodopStyle.BottomMargin + 'mm',
           html
         )
-        LODOP.SET_PRINT_STYLE("TableRespectPrintArea", 1); // 设置表格自适应打印区域
-        LODOP.SET_PRINT_STYLEA(0,"Offset2Top",-100);//设置次页向上偏移-18
+        LODOP.SET_PRINT_STYLEA(0,"Offset2Top",-200);//设置次页向上偏移-18
       } else {
         LODOP.ADD_PRINT_TABLE(
           printItem.top,
@@ -243,10 +252,9 @@ function _AddPrintItem(LODOP, tempItem, pageIndex = 0) {
           printItem.height,
           html
         )
-
-        LODOP.SET_PRINT_STYLE("TableRespectPrintArea", 1); // 设置表格自适应打印区域
-        LODOP.SET_PRINT_STYLEA(0,"Offset2Top",-100);//设置次页向上偏移-18
+        LODOP.SET_PRINT_STYLEA(0,"Offset2Top",-200);//设置次页向上偏移-18
       }
+      // LODOP.SET_PRINT_STYLEA(0,"LinkedItem",1);
     }
       break
     case 'braid-descriptions': {

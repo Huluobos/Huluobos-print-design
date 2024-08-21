@@ -578,5 +578,8 @@ export const OutStockOptions = [
 
     ]
   },
+  {"type":"braid-txt","isEdit":true,"title":"流程说明","value":"{bpmDescription}","name":"bpmDescription","defaultValue":"流程说明"},
+  {"type":"braid-txt","isEdit":true,"title":"流程标题","value":"{processInstanceName}","name":"processInstanceName"}
+
 ]
 
