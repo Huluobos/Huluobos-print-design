@@ -21,7 +21,7 @@
                       :controls="false"
               v-model="activeElement.height"
               controls-position="right"
-              :min="1"
+              :min="0"
               class="min-input"
             ></el-input-number>
           </el-form-item>

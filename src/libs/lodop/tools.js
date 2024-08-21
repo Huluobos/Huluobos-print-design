@@ -70,35 +70,38 @@ export const tableTempTohtml = (columns, data, style) => {
   return html
 }
 
-export const taskListTempTohtml = (printItem) => {
+export const taskListTempTohtml = (valueAttr,data,style) => {
   const resoltEachObj = {
     1: '处理中',
     2: '通过',
     3: '不通过',
     4: '退回'
   }
-  const valueAttr = printItem.valueAttr ? printItem.valueAttr : []
-  const defaultValue = printItem.defaultValue ? printItem.defaultValue : []
-  const style = printItem.style
-  let html = ''
-  html += "<div style=\"height:" + (printItem.height + 'px') + ";width: " + printItem.width + 'px'
-    + ";text-align:" + style.Alignment + ";font-size:" + style.FontSize + 'pt' + "\">"
-  html += "<div style=\"display: flex;flex-direction: column\">"
-  valueAttr.forEach(item => {
-    html += "<div style=\"width: 100%;display: flex;flex-direction: row;border-bottom: 1px dashed #000;padding: 2%;box-sizing: border-box;position: relative;\">"
-    html += "<div style=\"display: flex;flex-direction: column;margin-right: 6%;min-width: 15%;\">"
-    html += "<span>" + (item.assigneeUser.nickname ? item.assigneeUser.nickname : '') + "</span>"
-    html += "<span>" + (item.assigneeUser.deptName ? item.assigneeUser.deptName : '') + "</span>"
-    html += "</div>"
-    html += "<div style=\"display: flex;flex-direction: column;margin-right: 4%;\">"
-    html += "<span>" + (item.reason ? item.reason : '') + "</span>"
-    html += "<span>接收人：<i style=\"margin-right: 5px\">" + (item.name ? item.name : '') + "</i></span>"
-    html += "<span><i style=\"margin-right: 5px\">" + (item.endTime ? parseTime(item.endTime) : '') + "[<a>" + (resoltEachObj[item.result]) + "</a>]" + "</i></span>"
-    html += "</div>"
-    html += "</div>"
+  // 表格全局样式
+  let styleStr = 'text-align:' + style.Alignment + ';'
+  styleStr += 'font-size:' + style.FontSize + 'pt;'
+  styleStr += 'color:' + (style.FontColor? style.FontColor : '#000000') + ';'
+  // 这个 valueAttr 是默认值，在建立模版时展示 实际打印值使用 data
+  const dataList = data? data : valueAttr
+
+  let html = '<style> table td,table th {word-break: break-all;box-sizing:border-box} table{borderTop:1px}</style>'
+  html += '<table border=1 width=\'100%\' cellspacing=\'0\' frame="box" cellpadding=\'2\' style=\'border-collapse:collapse;' + styleStr +  '\'>'
+  // 解析表头
+  html += '<thead></thead><tbody>'
+  dataList.forEach(item => {
+    html += "<tr><td style='width: 25%;borderBottom: 1px;'>"
+    html += "<div style='margin-bottom:5pt;font-size:"+ (style.FontSize*100+50)/100 + 'pt' + "'>" + (item.assigneeUser.nickname ? item.assigneeUser.nickname : '') + "</div>"
+    html += "<div style='font-size:"+ (style.FontSize*100-50)/100 + 'pt' + "'>" + (item.assigneeUser.deptName ? item.assigneeUser.deptName : '') + "</div>"
+    html += "</td><td style='borderBottom: 1px;'>"
+    html += "<div style='white-space:pre-wrap;margin-bottom:5pt;font-size:"+ (style.FontSize*100-50)/100 + 'pt' + "'>" + (item.reason ? item.reason : '') + "</div>"
+    html += "<div style='margin-bottom:5pt;font-size:"+ (style.FontSize*100-50)/100 + 'pt' + "'>" + "接收人：<span style='margin-right: 2pt'>" + (item.name ? item.name : '') + "</span></div>"
+    html += "<div style='margin-bottom:5pt;font-size:"+ (style.FontSize*100-50)/100 + 'pt' + "'>" + (item.endTime ? parseTime(item.endTime) : '') + "<span style='margin-right: 5pt'>[" + (resoltEachObj[item.result]) + "]</span>" + "</div>"
+    html += "</td></tr>"
   })
-  html += "</div>"
-  html += "</div>"
+  html += '<tbody>'
+  html += '</table>'
+
+
   return html
 }
 /**

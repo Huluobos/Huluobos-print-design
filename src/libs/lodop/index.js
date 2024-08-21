@@ -189,6 +189,7 @@ function _AddPrintItem(LODOP, tempItem, pageIndex = 0) {
         printItem.height,
         printItem.value
       )
+      console.log(printItem)
       break
     case 'bar-code':
       LODOP.ADD_PRINT_BARCODE(
@@ -222,25 +223,29 @@ function _AddPrintItem(LODOP, tempItem, pageIndex = 0) {
     }
       break
     case 'braid-taskList': {
-      let html = taskListTempTohtml(printItem)
+      let html = taskListTempTohtml(printItem.valueAttr,printItem.defaultValue,printItem.style)
       // AutoHeight 只在这用就好， widgets 下的vue文件盒tools.js 里面都用 height 就好
       if (lodopStyle.AutoHeight) {
-        // LODOP.NewPage()
-        LODOP.ADD_PRINT_HTM(
+        LODOP.ADD_PRINT_TABLE(
           printItem.top,
           printItem.left,
           printItem.width,
           'BottomMargin:' + lodopStyle.BottomMargin + 'mm',
           html
         )
+        LODOP.SET_PRINT_STYLE("TableRespectPrintArea", 1); // 设置表格自适应打印区域
+        LODOP.SET_PRINT_STYLEA(0,"Offset2Top",-100);//设置次页向上偏移-18
       } else {
-        LODOP.ADD_PRINT_HTM(
+        LODOP.ADD_PRINT_TABLE(
           printItem.top,
           printItem.left,
           printItem.width,
           printItem.height,
           html
         )
+
+        LODOP.SET_PRINT_STYLE("TableRespectPrintArea", 1); // 设置表格自适应打印区域
+        LODOP.SET_PRINT_STYLEA(0,"Offset2Top",-100);//设置次页向上偏移-18
       }
     }
       break
