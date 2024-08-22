@@ -243,7 +243,7 @@ function _AddPrintItem(LODOP, tempItem, pageIndex = 0) {
           'BottomMargin:' + lodopStyle.BottomMargin + 'mm',
           html
         )
-        LODOP.SET_PRINT_STYLEA(0,"Offset2Top",-200);//设置次页向上偏移-18
+        LODOP.SET_PRINT_STYLEA(0,"Offset2Top",-100);//设置次页向上偏移-18
       } else {
         LODOP.ADD_PRINT_TABLE(
           printItem.top,
@@ -252,7 +252,7 @@ function _AddPrintItem(LODOP, tempItem, pageIndex = 0) {
           printItem.height,
           html
         )
-        LODOP.SET_PRINT_STYLEA(0,"Offset2Top",-200);//设置次页向上偏移-18
+        LODOP.SET_PRINT_STYLEA(0,"Offset2Top",-100);//设置次页向上偏移-18
       }
       // LODOP.SET_PRINT_STYLEA(0,"LinkedItem",1);
     }
