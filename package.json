@@ -1,0 +1,58 @@
+{
+  "name": "huluobos-print-design",
+  "version": "1.2.1",
+  "description": "一个基于Vue、ElementUi、Lodop的打印模板设计器。实现打印模板的设计、预览和打印功能。",
+  "publish": true,
+  "main": "lib/Huluobos-print-design.umd.min.js",
+  "files": [
+    "/lib"
+  ],
+  "keyword": "Huluobos lodop print-designer",
+  "author": "liuxia",
+  "scripts": {
+    "dev": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lib": "vue-cli-service build --target lib --name Huluobos-print-design --dest lib src/index.js"
+  },
+  "dependencies": {
+    "nanoid": "^1.0.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.0.0",
+    "@vue/cli-service": "^4.0.0",
+    "babel-eslint": "^10.0.3",
+    "babel-plugin-component": "^1.1.1",
+    "element-ui": "^2.15.14",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "sass": "^1.26.5",
+    "sass-loader": "^8.0.2",
+    "vue": "^2.6.11",
+    "vue-router": "^3.4.8",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "directories": {
+    "example": "example",
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Huluobos/Huluobos-print-design.git"
+  },
+  "keywords": [
+    "Huluobos",
+    "lodop",
+    "print",
+    "designer"
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Huluobos/Huluobos-print-design/issues"
+  },
+  "homepage": "https://github.com/Huluobos/Huluobos-print-design#readme"
+}
