@@ -24,28 +24,47 @@ function setLicenses(licenseInfo) {
  * @param {*Object} temp 打印模板
  * @param {*Array} data 打印数据
  */
-function print(temp, data) {
-
-  let LODOP = _CreateLodop(temp.title, temp.width, temp.height, temp.pageWidth, temp.pageHeight)
-  let tempItems = cloneDeep(temp.tempItems)
-  let printContent = _TempParser(tempItems, data)
-  if (printContent.length > 1) {
-    // 打印多份
-    printContent.forEach((aPrint, index) => {
-      LODOP.NewPageA()
-      aPrint.forEach((printItem) => {
-        _AddPrintItem(LODOP, printItem, index)
+async function print(temp, data) {
+  // console.log('------------开始单个')
+  return new Promise((resolve, reject)=>{
+    let LODOP = _CreateLodop(temp.title, temp.width, temp.height, temp.pageWidth, temp.pageHeight)
+    LODOP.SET_PRINT_MODE("CATCH_PRINT_STATUS",true);//执行该语句之后，PRINT指令不再返回那个所谓“打印成功”
+    let tempItems = cloneDeep(temp.tempItems)
+    let printContent = _TempParser(tempItems, data)
+    if (printContent.length > 1) {
+      // 打印多份
+      printContent.forEach((aPrint, index) => {
+        LODOP.NewPageA()
+        aPrint.forEach((printItem) => {
+          _AddPrintItem(LODOP, printItem, index)
+        })
       })
-    })
-  } else {
-    // 单份
-    printContent[0].forEach((printItem) => {
-      _AddPrintItem(LODOP, printItem)
-    })
-  }
+    } else {
+      // 单份
+      printContent[0].forEach((printItem) => {
+        _AddPrintItem(LODOP, printItem)
+      })
+    }
 
-  let flag = LODOP.PRINT()
-  return flag
+
+    if (LODOP.CVERSION) {//判断c_lodop是否存在，安装了c-lodop就会存在
+      LODOP.On_Return=function(TaskID,Value){
+
+        var timer = setInterval(function(){
+          const flag = LODOP.GET_VALUE("PRINT_STATUS_OK",Value);
+          const BUSY = LODOP.GET_VALUE("PRINT_STATUS_BUSY",Value);
+
+          if(flag!=0||flag!=false){
+            clearInterval(timer);
+            console.log('结束单个----'+ "flag:"+ flag +"-----TaskID:"+TaskID + "----BUSY:" +BUSY)
+            resolve()
+            return;
+          }
+        },300);
+      }
+    }
+    LODOP.PRINT()
+  })
 }
 
 /**
@@ -200,16 +219,6 @@ function _AddPrintItem(LODOP, tempItem, pageIndex = 0) {
         )
       }
 
-      break
-    case 'bar-code':
-      LODOP.ADD_PRINT_BARCODE(
-        printItem.top,
-        printItem.left,
-        printItem.width,
-        printItem.height,
-        lodopStyle.codeType,
-        printItem.value
-      )
       break
     case 'braid-html': {
       let html = htmlTempTohtml(printItem.defaultValue, printItem.style)

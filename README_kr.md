@@ -116,14 +116,6 @@ tempValue 为打印模板对象， 对象中参数具体解析如下：
     name: "companyName"
   },
   {
-    type: "bar-code",
-    title: "订单编号（条码）",
-    value: "{orderNumber}",
-    defaultValue: "1234567890",
-    name: "orderNumber",
-    lodopStyle: { QRCodeVersion: '1', QRCodeErrorLevel: 'L' },
-  },
-  {
     type: "braid-html",
     title: "分页",
     value: "{第##页/共##页}",
@@ -325,7 +317,6 @@ widgetOptions 为设计打印模板的打印项配置， 打印项有多种类�
 | value | 表格列数据                                  | String | ——     | ——     |
 | name  | 动态打印项数据名称（对应打印数据 key-name） | String | ——     | ——     |
 
-#### bar-code
 
 ##### Attributes:
 

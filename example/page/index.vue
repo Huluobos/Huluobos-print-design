@@ -231,15 +231,20 @@ export default {
           try {
             printData = JSON.parse(this.printForm.data)
           } catch (err) {
-            return this.$message('请输入正确格式的打印数据')
+            return MessageBox.alert('请输入正确格式的打印数据')
           }
           if (flag == 1) {
             this.$lodop.preview(this.tempList[this.printForm.tempIndex], printData)
           } else {
             this.$confirm('确认直接打印吗？', '确认信息')
-              .then((isPass) => {
+              .then( async (isPass) => {
                 if (isPass) {
-                  this.$lodop.print(this.tempList[this.printForm.tempIndex], printData)
+                  // let list = [1,2,3,4]
+                  // for (const each of list) {
+                    await this.$lodop.print(this.tempList[this.printForm.tempIndex], printData)
+                  // }
+                  alert('lodop打印完成所有！！！！！！！！！！')
+
                 }
               })
               .catch((err) => {

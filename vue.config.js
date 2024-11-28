@@ -1,5 +1,7 @@
 module.exports = {
   publicPath: './',
+  lintOnSave: false,
+  productionSourceMap: false,
   pages: {
     index: {
       // page 的入口
