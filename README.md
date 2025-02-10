@@ -11,6 +11,19 @@ V1.2.1 增加了 明细表  descriptions
 Huluobos-print-design 是 一个基于 Vue、ElementUi、C-Lodop 的打印模板设计器。实现打印模板的设计、预览和打印功能。[示例](https://myliuxia.github.io/demo/kr-print-designer/index.html),
 本项目针对 kr-print-designer 进行了升级优化
 
+## 发布 
+>https://www.npmjs.com/package/huluobos-print-design?activeTab=readme
+ 
+*  在packjson 中更改版本号  如 “1.3.1”
+*  在命令行中    
+    ```
+      npm login     
+    ```
+*  登录完成后，既可推送当前版本
+    ```
+     npm publish
+    ```
+
 ## 安装
 
 Vue 项目中引用该组件
