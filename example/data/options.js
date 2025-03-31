@@ -579,7 +579,44 @@ export const OutStockOptions = [
     ]
   },
   {"type":"braid-txt","isEdit":true,"title":"流程说明","value":"{bpmDescription}","name":"bpmDescription","defaultValue":"流程说明"},
-  {"type":"braid-txt","isEdit":true,"title":"流程标题","value":"{processInstanceName}","name":"processInstanceName"}
+  {"type":"braid-txt","isEdit":true,"title":"流程标题","value":"{processInstanceName}","name":"processInstanceName"},
+
+
+
+
+  {"type":"braid-txt","isEdit":true,"title":"商场2222","value":"商场2222 : {mallName}","name":"mallName","defaultValue":"商场"},
+  {"type":"braid-txt","isEdit":true,"title":"核算公司","value":"核算公司 : {ownerName}","name":"ownerName"},
+  {"type":"braid-txt","isEdit":true,"title":"日期","value":"日期 : {endTime}","name":"endTime"},
+
+  {
+    type: "braid-table", title: "转收资金", name: "walletForwardList", value: "{转收资金}", columnsAttr: [
+      {title: "商户", value: "{商户}", name: "traderName"},
+      {title: "金额", value: "{金额}", name: "handleAmount"},
+    ]
+  },
+  {
+    type: "braid-table", title: "返还资金", name: "walletReturnList", value: "{返还资金}", columnsAttr: [
+      {title: "商户", value: "{商户}", name: "transferName"},
+      {title: "金额", value: "{金额}", name: "handleAmount"},
+      {title: "开户行", value: "{开户行}", name: "bankName"},
+      {title: "账号", value: "{账号}", name: "transferAccount"},
+    ]
+  },
+
+
+//
+//   bankName
+// :
+// "吉林银行"
+// handleAmount
+//   :
+//   100
+// transferAccount
+//   :
+//   "6217000940005495776"
+// transferName
+//   :
+//   "王林林"
 
 ]
 

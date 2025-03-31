@@ -25,7 +25,6 @@ function setLicenses(licenseInfo) {
  * @param {*Array} data 打印数据
  */
 async function print(temp, data) {
-  // console.log('------------开始单个')
   return new Promise((resolve, reject)=>{
     let LODOP = _CreateLodop(temp.title, temp.width, temp.height, temp.pageWidth, temp.pageHeight)
     LODOP.SET_PRINT_MODE("CATCH_PRINT_STATUS",true);//执行该语句之后，PRINT指令不再返回那个所谓“打印成功”
@@ -281,6 +280,7 @@ function _AddPrintItem(LODOP, tempItem, pageIndex = 0) {
       {
         let html = tableTempTohtml(printItem.columns ? printItem.columns : [], printItem.defaultValue, printItem.style)
         if (lodopStyle.AutoHeight) {
+          console.log('lodop:Huluobos---执行次数---',printItem)
           LODOP.ADD_PRINT_TABLE(
             printItem.top,
             printItem.left,
