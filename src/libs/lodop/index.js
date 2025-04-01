@@ -26,7 +26,7 @@ function setLicenses(licenseInfo) {
  */
 async function print(temp, data) {
   return new Promise((resolve, reject)=>{
-    let LODOP = _CreateLodop(temp.title, temp.width, temp.height, temp.pageWidth, temp.pageHeight)
+    let LODOP = _CreateLodop(temp.title, temp.width, temp.height, temp.pageWidth, temp.pageHeight, temp.orient)
     LODOP.SET_PRINT_MODE("CATCH_PRINT_STATUS",true);//执行该语句之后，PRINT指令不再返回那个所谓“打印成功”
     let tempItems = cloneDeep(temp.tempItems)
     let printContent = _TempParser(tempItems, data)
@@ -72,7 +72,7 @@ async function print(temp, data) {
  * @param {*Array} data 打印数据
  */
 function preview(temp, data) {
-  let LODOP = _CreateLodop(temp.title, temp.width, temp.height, temp.pageWidth, temp.pageHeight)
+  let LODOP = _CreateLodop(temp.title, temp.width, temp.height, temp.pageWidth, temp.pageHeight, temp.orient)
   let tempItems = cloneDeep(temp.tempItems)
   let printContent = _TempParser(tempItems, data)
   if (data.length > 1) {
@@ -99,7 +99,7 @@ function preview(temp, data) {
  * @param {*Object} temp 打印模板
  */
 function previewTemp(temp) {
-  let LODOP = _CreateLodop(temp.title, temp.width, temp.height, temp.pageWidth, temp.pageHeight)
+  let LODOP = _CreateLodop(temp.title, temp.width, temp.height, temp.pageWidth, temp.pageHeight, temp.orient)
 
   let printContent = _TempParser(temp.tempItems)
   printContent[0].forEach(printItem => {
@@ -112,6 +112,7 @@ function previewTemp(temp) {
 
 /**
  * LODOP 根据属性创建打印
+ * @param orient 纸张方向
  * @param pageName 纸张名称
  * @param width 可视区域宽度(单位px)
  * @param height 可视区域高度(单位px)
@@ -120,7 +121,7 @@ function previewTemp(temp) {
  * @param top 可视区域上边距(单位px)
  * @param left 可视区域左边距(单位px)
  */
-function _CreateLodop(pageName, width, height, pageWidth = 0, pageHeight = 0, top = 0, left = 0) {
+function _CreateLodop(pageName, width, height, pageWidth = 0, pageHeight = 0, orient ,top = 0, left = 0) {
   let LODOP = getLodop()
   LODOP.SET_LICENSES("","C784E10C2D0851227AE6BC2F405565747C8","","");
   // 设置软件产品注册信息
@@ -128,7 +129,15 @@ function _CreateLodop(pageName, width, height, pageWidth = 0, pageHeight = 0, to
   // setTimeout(()=>{
     LODOP.SET_LICENSES("","C784E10C2D0851227AE6BC2F405565747C8","","");
     LODOP.PRINT_INITA(top, left, width, height, pageName)
-    LODOP.SET_PRINT_PAGESIZE(1, pageWidth ? pageWidth + 'mm' : 0, pageHeight ? pageHeight + 'mm' : 0, '')
+    /*
+   Orient：打印方向及纸张类型
+     1---纵向打印，固定纸张；
+     2---横向打印，固定纸张；
+     3---纵向打印，宽度固定，高度按打印内容的高度自适应(见样例18)；
+     0---方向不定，由操作者自行选择或按打印机缺省设置。
+     *
+    *  */
+    LODOP.SET_PRINT_PAGESIZE(orient ? orient : 1 , pageWidth ? pageWidth + 'mm' : 0, pageHeight ? pageHeight + 'mm' : 0, '')  // 设置打印纸张大小 第一个参数：方向
     return LODOP
   // })
 
