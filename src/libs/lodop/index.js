@@ -128,6 +128,8 @@ function previewTemp(temp) {
  * @param left 可视区域左边距(单位px)
  */
 function _CreateLodop(pageName, width, height, pageWidth = 0, pageHeight = 0, orient ,top = 0, left = 0) {
+  console.log('----------------')
+  console.log(width, height)
   let LODOP = getLodop()
   LODOP.SET_LICENSES("","C784E10C2D0851227AE6BC2F405565747C8","","");
   // 设置软件产品注册信息
@@ -279,7 +281,7 @@ function _AddPrintItem(LODOP, tempItem, pageIndex = 0) {
           printItem.height,
           html
         )
-        LODOP.SET_PRINT_STYLEA(0,"Offset2Top", lodopStyle.Offset2Top)|| -100;//设置次页向上偏移
+        LODOP.SET_PRINT_STYLEA(0,"Offset2Top", lodopStyle.Offset2Top|| -100);//设置次页向上偏移
       }
       // LODOP.SET_PRINT_STYLEA(0,"LinkedItem",1);
     }
@@ -307,6 +309,9 @@ function _AddPrintItem(LODOP, tempItem, pageIndex = 0) {
             'BottomMargin:' + lodopStyle.BottomMargin + 'mm',
             html
           )
+          if(lodopStyle.Offset2Top || lodopStyle.Offset2Top === 0){
+            LODOP.SET_PRINT_STYLEA(0,"Offset2Top", lodopStyle.Offset2Top);//设置次页向上偏移
+          }
         } else {
           LODOP.ADD_PRINT_TABLE(
             printItem.top,
@@ -315,7 +320,9 @@ function _AddPrintItem(LODOP, tempItem, pageIndex = 0) {
             printItem.height,
             html
           )
-
+          if(lodopStyle.Offset2Top || lodopStyle.Offset2Top === 0){
+            LODOP.SET_PRINT_STYLEA(0,"Offset2Top", lodopStyle.Offset2Top);//设置次页向上偏移
+          }
         }
       }
       break
