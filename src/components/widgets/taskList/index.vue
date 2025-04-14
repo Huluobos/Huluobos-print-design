@@ -54,6 +54,7 @@ export default {
       FontSize: 9,
       AutoHeight: false, // 高度自动（模板在该元素位置以下的元素都关联打印）
       BottomMargin: 0, // 距离下边距
+      Offset2Top: 0, // 设置次页向上偏移
     },
   },
   props: [

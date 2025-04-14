@@ -170,6 +170,34 @@
           </el-form-item>
         </el-col>
       </el-row>
+      <el-row>
+        <el-col :span="24">
+          <el-form-item label="内边距">
+            <el-input-number
+              :controls="false"
+              :disabled="activeElement.style.LineHeight===undefined"
+              v-model="activeElement.style.LineHeight"
+              controls-position="right"
+              :min="0"
+              class="min-input"
+            ></el-input-number>
+          </el-form-item>
+        </el-col>
+      </el-row>
+      <el-row>
+        <el-col :span="24">
+          <el-form-item label="次页上移">
+            <el-input-number
+              :controls="false"
+              :disabled="activeElement.style.Offset2Top===undefined"
+              v-model="activeElement.style.Offset2Top"
+              controls-position="right"
+              :min="-9999"
+              class="min-input"
+            ></el-input-number>
+          </el-form-item>
+        </el-col>
+      </el-row>
     </el-form>
   </div>
 </template>

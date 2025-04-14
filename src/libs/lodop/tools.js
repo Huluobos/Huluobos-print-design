@@ -36,9 +36,9 @@ export const tableTempTohtml = (columns, data, style) => {
   columns.forEach(column => {
 
     if (column.name === '_seq') { // 序号列
-      html += '<th width="30">'
+      html += '<th width="30" style="height: '+ (style.LineHeight||0) + '">'
     } else {
-      html += '<th>'
+      html += '<th style="height: '+ (style.LineHeight||0) + '">'
     }
     html += column.title
     html += '</th>'
@@ -53,10 +53,10 @@ export const tableTempTohtml = (columns, data, style) => {
       html += '<tr>'
       columns.forEach(column => {
         if (column.name === '_seq') {
-          html += '<td>'
+          html += '<td style="height: '+ (style.LineHeight||0) + '">'
           html += (idx + 1)
         } else {
-          html += '<td>'
+          html +=  '<td style="height: '+ (style.LineHeight||0) + '">'
           html += item[column.name] || ''
         }
         html += '</td>'

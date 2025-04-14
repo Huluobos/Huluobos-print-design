@@ -22,13 +22,14 @@
     >
       <tr>
         <th
+          :style="{height: val.style.LineHeight + 'px'}"
           v-for="item in columns"
           :key="item.name"
           :width="item.name==='_seq'?40:''"
         >{{item.title}}</th>
       </tr>
       <tr>
-        <td v-for="item in columns" :key="item.name">{{item.value}}</td>
+        <td v-for="item in columns" :key="item.name"  :style="{height: val.style.LineHeight + 'px'}">{{item.value}}</td>
       </tr>
     </table>
   </div>
@@ -64,6 +65,7 @@ export default {
       BorderColor: '#000000',
       AutoHeight: false, // 高度自动（模板在该元素位置以下的元素都关联打印）
       BottomMargin: 0, // 距离下边距
+      LineHeight: 0, // 单元格内边距
     },
   },
   props: [

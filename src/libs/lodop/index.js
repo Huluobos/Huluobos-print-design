@@ -28,6 +28,12 @@ async function print(temp, data) {
   return new Promise((resolve, reject)=>{
     let LODOP = _CreateLodop(temp.title, temp.width, temp.height, temp.pageWidth, temp.pageHeight, temp.orient)
     LODOP.SET_PRINT_MODE("CATCH_PRINT_STATUS",true);//执行该语句之后，PRINT指令不再返回那个所谓“打印成功”
+    //是否指定打印机
+    if(temp.oIndexOrName && temp.oIndexOrName != ''){
+      LODOP.SET_PRINTER_INDEXA(temp.oIndexOrName);
+    }
+
+
     let tempItems = cloneDeep(temp.tempItems)
     let printContent = _TempParser(tempItems, data)
     if (printContent.length > 1) {
@@ -138,7 +144,11 @@ function _CreateLodop(pageName, width, height, pageWidth = 0, pageHeight = 0, or
      *
     *  */
     LODOP.SET_PRINT_PAGESIZE(orient ? orient : 1 , pageWidth ? pageWidth + 'mm' : 0, pageHeight ? pageHeight + 'mm' : 0, '')  // 设置打印纸张大小 第一个参数：方向
-    return LODOP
+    if(orient && orient==2){
+      LODOP.SET_PRINT_STYLEA(0,"AngleOfPageInside",-90);
+    }
+
+  return LODOP
   // })
 
 
@@ -260,7 +270,7 @@ function _AddPrintItem(LODOP, tempItem, pageIndex = 0) {
           'BottomMargin:' + lodopStyle.BottomMargin + 'mm',
           html
         )
-        LODOP.SET_PRINT_STYLEA(0,"Offset2Top",-100);//设置次页向上偏移-18
+        LODOP.SET_PRINT_STYLEA(0,"Offset2Top",lodopStyle.Offset2Top || -100);//设置次页向上偏移
       } else {
         LODOP.ADD_PRINT_TABLE(
           printItem.top,
@@ -269,7 +279,7 @@ function _AddPrintItem(LODOP, tempItem, pageIndex = 0) {
           printItem.height,
           html
         )
-        LODOP.SET_PRINT_STYLEA(0,"Offset2Top",-100);//设置次页向上偏移-18
+        LODOP.SET_PRINT_STYLEA(0,"Offset2Top", lodopStyle.Offset2Top)|| -100;//设置次页向上偏移
       }
       // LODOP.SET_PRINT_STYLEA(0,"LinkedItem",1);
     }
