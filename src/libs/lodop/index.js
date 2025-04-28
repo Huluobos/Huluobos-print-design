@@ -128,8 +128,6 @@ function previewTemp(temp) {
  * @param left 可视区域左边距(单位px)
  */
 function _CreateLodop(pageName, width, height, pageWidth = 0, pageHeight = 0, orient ,top = 0, left = 0) {
-  console.log('----------------')
-  console.log(width, height)
   let LODOP = getLodop()
   LODOP.SET_LICENSES("","C784E10C2D0851227AE6BC2F405565747C8","","");
   // 设置软件产品注册信息

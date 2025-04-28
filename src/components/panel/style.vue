@@ -34,7 +34,7 @@
                       :controls="false"
               v-model="activeElement.left"
               controls-position="right"
-              :min="0"
+              :min="-99999"
               class="min-input"
             ></el-input-number>
           </el-form-item>
@@ -45,7 +45,7 @@
                       :controls="false"
               v-model="activeElement.top"
               controls-position="right"
-              :min="0"
+                      :min="-99999"
               class="min-input"
             ></el-input-number>
           </el-form-item>
