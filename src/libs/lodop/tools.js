@@ -88,49 +88,63 @@ export const taskListTempTohtml = (valueAttr,data,style) => {
   html += '<table border=1 width=\'100%\' cellspacing=\'0\' frame="box" cellpadding=\'2\' style=\'border-collapse:collapse;' + styleStr +  '\'>'
   // 解析表头
   html += '<thead></thead><tbody>'
-  let newDataList = []
 
-  dataList.forEach((item,ins)=>{
-    if( !newDataList[Math.floor(ins / 2)] ){
-      newDataList[Math.floor(ins / 2)] = []
-    }
-    if(ins % 2 === 0){
-      newDataList[Math.floor(ins / 2)].push({ ...item })
-    }else{
-      newDataList[Math.floor(ins / 2)].push({ ...item })
-    }
 
-    if(ins === dataList.length - 1){
-      newDataList[Math.floor(ins / 2)].length === 1 ? newDataList[Math.floor(ins / 2)].push({}) : ''
-    }
-  })
-  newDataList.forEach(item => {
-    const item1 = item[0]
-    const item2 = item[1]
-    html += "<tr><td style='width: 12%;borderBottom: 1px;'>";
-    html += "<div style='margin-bottom:1pt;font-size:" + (style.FontSize * 100 + 50) / 100 + 'pt' + "'>" + (item1?.assigneeUser?.nickname ? item1.assigneeUser?.nickname : '') + "</div>";
-    html += "<div style='font-size:" + (style.FontSize * 100 - 50) / 100 + 'pt' + "'>" + (item1?.assigneeUser?.deptName ? item1.assigneeUser.deptName : '') + "</div>";
+  dataList.forEach(item => {
+    html += "<tr><td style='width: 25%;borderBottom: 1px;'>";
+    html += "<div style='margin-bottom:1pt;font-size:" + (style.FontSize * 100 + 50) / 100 + 'pt' + "'>" + (item?.assigneeUser?.nickname ? item.assigneeUser?.nickname : '') + "</div>";
+    html += "<div style='font-size:" + (style.FontSize * 100 - 50) / 100 + 'pt' + "'>" + (item?.assigneeUser?.deptName ? item.assigneeUser.deptName : '') + "</div>";
     html += "</td><td style='borderBottom: 1px;'>";
-    html += "<div style='white-space:pre-wrap;margin-bottom:1pt;font-size:" + (style.FontSize * 100 - 50) / 100 + 'pt' + "'>" + (item1?.reason ? item1.reason : '') + "</div>";
-    html += "<div style='margin-bottom:1pt;font-size:" + (style.FontSize * 100 - 50) / 100 + 'pt' + "'>" + "接收人：<span style='margin-right: 1pt'>" + (item1?.name ? item1.name : '') + "</span></div>";
-    html += "<div style='margin-bottom:1pt;font-size:" + (style.FontSize * 100 - 50) / 100 + 'pt' + "'>" + (item1?.endTime ? parseTime(item1.endTime) : '') + "<span style='margin-right: 1pt'>[" + item1?.result ? resoltEachObj[item1.result] :'' + "]</span>" + "</div>";
+    html += "<div style='white-space:pre-wrap;margin-bottom:1pt;font-size:" + (style.FontSize * 100 - 50) / 100 + 'pt' + "'>" + (item?.reason ? item.reason : '') + "</div>";
+    html += "<div style='margin-bottom:1pt;font-size:" + (style.FontSize * 100 - 50) / 100 + 'pt' + "'>" + "接收人：<span style='margin-right: 1pt'>" + (item?.name ? item.name : '') + "</span></div>";
+    html += "<div style='margin-bottom:1pt;font-size:" + (style.FontSize * 100 - 50) / 100 + 'pt' + "'>" + (item?.endTime ? parseTime(item.endTime) : '') + "<span style='margin-right: 1pt'>[" + (item?.result ? resoltEachObj[item.result] :'') + "]</span>" + "</div>";
     html += "</td>";
-
-    if(item2?.assigneeUser){
-      html += "<td style='width: 12%;borderBottom: 1px;'>";
-      html += "<div style='margin-bottom:1pt;font-size:" + (style.FontSize * 100 + 50) / 100 + 'pt' + "'>" + (item2?.assigneeUser?.nickname ? item2.assigneeUser?.nickname : '') + "</div>";
-      html += "<div style='font-size:" + (style.FontSize * 100 - 50) / 100 + 'pt' + "'>" + (item2?.assigneeUser?.deptName ? item2.assigneeUser.deptName : '') + "</div>";
-      html += "</td><td style='borderBottom: 1px;'>";
-      html += "<div style='white-space:pre-wrap;margin-bottom:1pt;font-size:" + (style.FontSize * 100 - 50) / 100 + 'pt' + "'>" + (item2?.reason ? item2.reason : '') + "</div>";
-      html += "<div style='margin-bottom:1pt;font-size:" + (style.FontSize * 100 - 50) / 100 + 'pt' + "'>" + "接收人：<span style='margin-right: 1pt'>" + (item2?.name ? item2.name : '') + "</span></div>";
-      html += "<div style='margin-bottom:1pt;font-size:" + (style.FontSize * 100 - 50) / 100 + 'pt' + "'>" + (item2?.endTime ? parseTime(item2.endTime) : '') + "<span style='margin-right: 1pt'>[" + item2?.result ? resoltEachObj[item2.result] :'' + "]</span>" + "</div>";
-      html += "</td>";
-    }else{
-      html += "<td></td>";
-    }
-
     html += "</tr>";
   });
+
+
+  // let newDataList = []
+  // dataList.forEach((item,ins)=>{
+  //   if( !newDataList[Math.floor(ins / 2)] ){
+  //     newDataList[Math.floor(ins / 2)] = []
+  //   }
+  //   if(ins % 2 === 0){
+  //     newDataList[Math.floor(ins / 2)].push({ ...item })
+  //   }else{
+  //     newDataList[Math.floor(ins / 2)].push({ ...item })
+  //   }
+  //
+  //   if(ins === dataList.length - 1){
+  //     newDataList[Math.floor(ins / 2)].length === 1 ? newDataList[Math.floor(ins / 2)].push({}) : ''
+  //   }
+  // })
+  // newDataList.forEach(item => {
+  //   const item1 = item[0]
+  //   const item2 = item[1]
+  //   html += "<tr><td style='width: 12%;borderBottom: 1px;'>";
+  //   html += "<div style='margin-bottom:1pt;font-size:" + (style.FontSize * 100 + 50) / 100 + 'pt' + "'>" + (item1?.assigneeUser?.nickname ? item1.assigneeUser?.nickname : '') + "</div>";
+  //   html += "<div style='font-size:" + (style.FontSize * 100 - 50) / 100 + 'pt' + "'>" + (item1?.assigneeUser?.deptName ? item1.assigneeUser.deptName : '') + "</div>";
+  //   html += "</td><td style='borderBottom: 1px;'>";
+  //   html += "<div style='white-space:pre-wrap;margin-bottom:1pt;font-size:" + (style.FontSize * 100 - 50) / 100 + 'pt' + "'>" + (item1?.reason ? item1.reason : '') + "</div>";
+  //   html += "<div style='margin-bottom:1pt;font-size:" + (style.FontSize * 100 - 50) / 100 + 'pt' + "'>" + "接收人：<span style='margin-right: 1pt'>" + (item1?.name ? item1.name : '') + "</span></div>";
+  //   html += "<div style='margin-bottom:1pt;font-size:" + (style.FontSize * 100 - 50) / 100 + 'pt' + "'>" + (item1?.endTime ? parseTime(item1.endTime) : '') + "<span style='margin-right: 1pt'>[" + (item1?.result ? resoltEachObj[item1.result] :'') + "]</span>" + "</div>";
+  //   html += "</td>";
+  //
+  //   if(item2?.assigneeUser){
+  //     html += "<td style='width: 12%;borderBottom: 1px;'>";
+  //     html += "<div style='margin-bottom:1pt;font-size:" + (style.FontSize * 100 + 50) / 100 + 'pt' + "'>" + (item2?.assigneeUser?.nickname ? item2.assigneeUser?.nickname : '') + "</div>";
+  //     html += "<div style='font-size:" + (style.FontSize * 100 - 50) / 100 + 'pt' + "'>" + (item2?.assigneeUser?.deptName ? item2.assigneeUser.deptName : '') + "</div>";
+  //     html += "</td><td style='borderBottom: 1px;'>";
+  //     html += "<div style='white-space:pre-wrap;margin-bottom:1pt;font-size:" + (style.FontSize * 100 - 50) / 100 + 'pt' + "'>" + (item2?.reason ? item2.reason : '') + "</div>";
+  //     html += "<div style='margin-bottom:1pt;font-size:" + (style.FontSize * 100 - 50) / 100 + 'pt' + "'>" + "接收人：<span style='margin-right: 1pt'>" + (item2?.name ? item2.name : '') + "</span></div>";
+  //     html += "<div style='margin-bottom:1pt;font-size:" + (style.FontSize * 100 - 50) / 100 + 'pt' + "'>" + (item2?.endTime ? parseTime(item2.endTime) : '') + "<span style='margin-right: 1pt'>[" + (item2?.result ? resoltEachObj[item2.result] :'' )+ "]</span>" + "</div>";
+  //     html += "</td>";
+  //   }else{
+  //     html += "<td></td>";
+  //   }
+
+    // html += "</tr>";
+  // });
 
   html += '<tbody>'
   html += '</table>'
